@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Green Hell</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Green Hell</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>14h 6m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-30.01.2023">30.01.2023</a> 19:06:07</TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:18:36</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:35:00</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Gespielt">Gespielt</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-05.09.2019">05.09.2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-84">84</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-83">83</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Simulator">Simulator</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Creepy Jar">Creepy Jar</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Creepy Jar">Creepy Jar</a><br/><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Forever Entertainment S. A.">Forever Entertainment S. A.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://www.greenhell-game.com/" target="_blank">Official</a><br/><a href="https://www.facebook.com/GreenHellGame" target="_blank">Facebook</a><br/><a href="https://twitter.com/GreenHellGame" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/channel/UCCZ5dMgYoVurtpBE5omHf0Q" target="_blank">YouTube</a><br/><a href="https://store.steampowered.com/app/815370" target="_blank">Steam</a><br/><a href="https://www.instagram.com/greenhell_game" target="_blank">Instagram</a><br/><a href="https://discordapp.com/invite/greenhell" target="_blank">Discord</a><br/><a href="https://www.twitch.tv/directory/game/Green%20Hell" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<a href="https://clan.akamai.steamstatic.com/images/32791864/4f81dc0993aa9f06e9045ef674c8037530267ca3.jpg" target="_blank" rel=""  ><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/815370/extras/GH-Updates-Roadmap-616x298.png?t=1726039628" /></a><br><br><strong>GREEN HELL ist eine Open-World-Survival-Simulation, der vor der unerforschten, einzigartigen Kulisse des Amazonas-Regenwalds spielt.</strong><br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/815370/extras/GH-Weapons.gif?t=1726039628" /><br><br>Du befindest dich mutterseelenallein im Dschungel. Ohne Essen oder Ausrüstung, mit nur einem Ziel: Überleben. Du klammerst dich ans Leben und beginnst eine Reise, die dein Durchhaltevermögen auf die Probe stellen wird – die Einsamkeit wird nicht nur deinen Körper, sondern auch deinen Geist aufs Äußerste fordern. Wie lange kannst du gegen die Gefahren des Unbekannten überleben?<br><br>Auf dieser Reise erhältst du keine Hilfe von der Außenwelt. Lerne selbst, zu überleben. Deine beiden Hände sind das Einzige, was dir anfangs zur Verfügung steht, um Unterstände zu errichten, Werkzeuge herzustellen und Waffen zu bauen, um jagen und dich verteidigen zu können. Der Dschungel ist eine ständige Bedrohung – du kämpfst nicht nur gegen wilde Tiere, sondern auch tropische Krankheiten. Auch die Fallen deines eigenen Verstandes – deine Ängste – kriechen durch die Dunkelheit des endlosen Dschungels und sind eine ganz eigene Bedrohung.<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/815370/extras/GH-Hunting.gif?t=1726039628" /><h2 class="bb_tag">GESCHICHTE</h2>Du findest dich in den Tiefen des undurchdringlichen Amazonas-Regenwalds wieder. Die grüne Hölle. Dein Ziel ist es, diese albtraumhafte Umgebung zu überleben und die intuitivsten Wege zu nutzen, um zu entkommen. Der einzige Lichtblick ist ein Funkgerät, aus dem die bekannte Stimme einer geliebten Person schallt, der du durch den endlosen, feindlich gesinnten Dschungel folgst. Stück für Stück wird sich dir offenbaren, wie du überhaupt hierher geraten bist. Doch was du entdeckst, wird schlimmer sein als alles, was dir bisher das Leben schwergemacht hat.<h2 class="bb_tag">DIE FRAGE</h2>Wohin kann der menschliche Geist wandern?<h2 class="bb_tag">SPIELMERKMALE</h2><br><strong>REALISTISCHE SURVIVAL-SIMULATION</strong><br><ul class="bb_ul"><li>Nutze echte Survival-Techniken (darunter Feuerstellen und Lagerbau sowie das Auslegen von Tierfallen).<br></li><li>Stelle Gegenstände her, die du zum Überleben brauchst (unter anderem Waffen und Werkzeuge).<br></li><li>Finde Essen (durch Jagd und Ackerbau).<br></li><li>Wunden, Krankheiten und andere Verletzungen müssen behandelt werden, wenn du ihnen nicht erliegen willst.</li></ul><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/815370/extras/GH-Attack.gif?t=1726039628" /><br><br><strong>PSYCHOLOGISCHER THRILLER</strong><br>Die Geschichte von Green Hell legt besonderes Augenmerk auf die psychologischen Aspekte des Überlebens unter Extrembedingungen. Du kämpfst nicht nur gegen die Umgebung, sondern auch um deine geistige Gesundheit. Wirst du erfolgreich sein oder in die Tiefen deines eigenen Verstandes stürzen? Um die Wahrheit zu enthüllen, musst du den härtesten Kampf bestehen, den du je kämpfen wirst: gegen dich selbst, deine Schwächen und Ängste.<br><br><strong>DIE KULISSE: DER AMAZONAS-REGENWALD</strong><br>Der Amazonas-Regenwald ist eine der reichhaltigsten natürlichen Umgebungen der Welt. Exotisch, atemberaubend, spektakulär, farbenfroh, geräuschvoll – aber ebenso tödlich, kompromisslos und gefährlich für die Unvorbereiteten.<br><ul class="bb_ul"><li>Ein Teil des Amazonas-Regenwalds wurde für das Spiel virtuell umgesetzt.<br></li><li>Dutzende von Pflanzen und Tierarten (Säugetiere, Reptilien, Vögel und Insekten).<br></li><li>Simulation des natürlichen Auftretens und Verhaltens der Tiere.<br></li><li>Die Umgebung ändert sich dynamisch je nach Wetter.</li></ul><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/815370/extras/GH-CoOp.gif?t=1726039628" /><br><br><strong>EINZIGARTIGE SPIELMECHANIKEN</strong><br>Überleben unter derart extremen Bedingungen erfordert Willenskraft – ohne erwartet dich nur Wahnsinn und Tod. In der grünen Hölle sind deine geistige und körperliche Gesundheit untrennbar miteinander verbunden. Im Körperinspektionsmodus kannst du dich genau betrachten und deinen Körper heilen. Hier kannst du dich auch von diversen Parasiten befreien, die sich in deinem Körper häuslich niederlassen wollen.<br><br>Die psycho-physischen Parameter sind unter anderem:<br><ul class="bb_ul"><li>Psychologische Verfassung<br></li><li>Körperliche Verfassung</li></ul><br><strong>EINZIGARTIGE FEATURES</strong><br><ul class="bb_ul"><li>Setting: der tödliche, wunderschöne Amazones-Regenwald<br></li><li>Körperinspektionsmodus<br></li><li>Eine reichhaltige Fauna und Flora mit all ihren Gefahren<br></li><li>Die Umgebung und Situation haben einen Einfluss auf die Psychologie des Charakters.<br></li><li>Änderungen in der Umgebung wirken sich auf das ganze Ökosystem aus.<br></li><li>Eine fesselnde Story<br></li><li>Die Umgebung ändert sich dynamisch.</li></ul><h2 class="bb_tag"><u>SCHAU DIR UNSER NÄCHSTES VIDEOSPIEL AN</u></h2>  <br><a href="https://store.steampowered.com/app/1631270/StarRupture/" target="_blank" rel=""  ><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/815370/extras/starrupture_wishlist.gif?t=1726039628" /></a><br><a href="https://store.steampowered.com/app/1631270/StarRupture/" target="_blank" rel=""  id="dynamiclink_3" >https://store.steampowered.com/app/1631270/StarRupture/</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

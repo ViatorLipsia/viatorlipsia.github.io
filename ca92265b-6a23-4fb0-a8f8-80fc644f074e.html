@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>ShellShock Live</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> ShellShock Live</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>3d 7h 3m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-17.12.2023">17.12.2023</a> 3:42:16</TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:18:36</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:27:58</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Gespielt">Gespielt</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-07.03.2019">07.03.2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-69">69</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Shooter">Shooter</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Strategy">Strategy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-kChamp Games">kChamp Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-kChamp Games">kChamp Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Massively Multiplayer Online (MMO)">Massively Multiplayer Online (MMO)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.facebook.com/ShellShockLive" target="_blank">Facebook</a><br/><a href="https://twitter.com/shellshocklive" target="_blank">Twitter</a><br/><a href="https://store.steampowered.com/app/326460" target="_blank">Steam</a><br/><a href="https://shellshocklive.gamepedia.com/ShellShock_Live_Wiki" target="_blank">Wikia</a><br/><a href="https://www.reddit.com/r/shellshocklive" target="_blank">Reddit</a><br/><a href="http://www.shellshocklive.com/" target="_blank">Official</a><br/><a href="http://itunes.apple.com/us/app/id1613075986#?platform=iphone" target="_blank">iPhone</a><br/><a href="http://itunes.apple.com/us/app/id1613075986#?platform=ipad" target="_blank">iPad</a><br/><a href="https://www.twitch.tv/directory/game/ShellShock%20Live" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<strong>ShellShock Live</strong> ist ein strategisches Online-Mehrspieler-Artillerie-Spiel, das sich derzeit bei <a href="https://steamcommunity.com/linkfilter/?u=http%3A%2F%2Fwww.kchampgames.com%2F" target="_blank" rel=" noopener"  >kChamp Games</a> in der Entwicklung befindet.<h2 class="bb_tag">Kämpfe Seite an Seite mit deinen Freunden (oder jage sie in die Luft… Wir verurteilen dich nicht!)</h2><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Sep.png?t=1683306935" /><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Fight.png?t=1683306935" /><br><br>Nimm an actiongeladenen Kämpfen für 8-Spieler-Teams teil oder an Partien, wo jeder gegen jeden kämpft. Viele unterschiedliche Panzer, Waffen, Items, Karten und Spielstile machen jede Partie einzigartig. Für den Sieg wird deine Taktik entscheidend sein.<h2 class="bb_tag">Viel zu viele Waffen</h2><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Sep.png?t=1683306935" /><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Weapons.png?t=1683306935" /><br><br>Irgendwie ist es ja ein bisschen albern. Von der bedrohlichen „Möwe“ bis hin zur wuchtigen „Mega-Atombombe“ – du kannst mehr als 200 einzigartige Waffen voller Power freischalten, aufwerten und meistern. Und am besten ist, wir entwickeln täglich neue und lassen sie auf euch los.<h2 class="bb_tag">Massenhaft Modi</h2><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Sep.png?t=1683306935" /><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Modes.png?t=1683306935" /><br><br>So ein Panzermassaker wird sicher schnell langweilig, oder? Falsch! Mit den unverwechselbaren Spielmodi bleibt das Spiel frisch und gibt dir die Möglichkeit, Panzer auf unzählige Arten in Schutt und Asche zu legen.<h2 class="bb_tag">Werde der Beste aller Zeiten</h2><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Sep.png?t=1683306935" /><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Level.png?t=1683306935" /><br><br>Verdiene EP, erreiche höhere Level und werde der König des Schlachtfelds. Steige in 100 einzigartigen Rängen auf – jeder bietet besondere Belohnungen und schaltet etwas Neues frei. Mit globalen Bestenlisten und Platzierungen bleiben die Dinge spannend.<h2 class="bb_tag">Werte alles auf</h2><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Sep.png?t=1683306935" /><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Upgrade.png?t=1683306935" /><br><br>Und wenn wir alles sagen, dann meinen wir auch alles. Werte deinen Panzer auf. Werte deine Fähigkeiten auf. Werte deine Ausrüstung auf. Werte dein Arsenal auf. Die mehr als 200 Waffen können allesamt im Spiel zu noch stärkeren Versionen aufgewertet werden.<h2 class="bb_tag">Die Natur hat nicht den Hauch einer Chance</h2><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Sep.png?t=1683306935" /><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Terrain.png?t=1683306935" /><br><br>Das vollständig zerstörbare Gelände erzeugt ein sich dynamisch veränderndes Schlachtfeld. Erdbeben und andere Naturkatastrophen halten dich auf Zack (genau wie im richtigen Leben!)<h2 class="bb_tag">(Sehr) eifriger Entwickler</h2><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Sep.png?t=1683306935" /><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Victory.png?t=1683306935" /><br><br>Wir hauen fast täglich Updates für ShellShock Live raus – mit neuen Features und fantastischen Vorschlägen der Community. Unter Ankündigungen findest du alles zu neuen Versionen. Oder du besuchst die Foren und trittst der Community bei.<h2 class="bb_tag">Überhaupt nicht böse Entwickler</h2><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Sep.png?t=1683306935" /><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/326460/extras/Gears.png?t=1683306935" /><br><br>Die Inhalte im Spiel verdienst du dir beim Spielen, nicht an der Kasse. Keine Mikrotransaktionen, keine Premiumversion, kein Blödsinn. Sobald du das Spiel besitzt, besitzt du alles.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

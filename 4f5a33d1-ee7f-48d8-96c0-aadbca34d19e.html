@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Frog Detective: Die gesammelten F&#228;lle</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Frog Detective: Die gesammelten F&#228;lle</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>Nicht gespielt</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-Nie">Nie</a> </TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:13:30</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:15:53</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-Microsoft X Cloud">Microsoft X Cloud</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-27.10.2022">27.10.2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-70">70</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-85">85</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Puzzle">Puzzle</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-worm club">worm club</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-worm club">worm club</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/franchise/frogdetective" target="_blank">Steam</a><br/><a href="https://frogdetective.net/" target="_blank">Official</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<p>
+Du bist Detektiv und ein Frosch! Zeit, drei spannende F&#228;lle zu l&#246;sen!
+</p>
+<p>
+Schl&#252;pfe in die Rolle des zweitbesten Ermittlers des Teams, finde Hinweise, befrage Zeugen und nimm alles unter die Lupe. Kritische Stimmen bezeichnen dein Detektiv-Utensil zwar als „nutzlos“, aber was wissen die schon?
+</p>
+<p>
+„Die Geisterinsel“ hei&#223;t der erste Fall unseres Detektivs: Ein Faultier leidet seit Wochen unter einem mysteri&#246;sen Geist, den scheinbar niemand dingfest machen kann. Auch ein Team von Geisterforschern schafft keine Abhilfe. Aber das tropische Faultier hat Gl&#252;ck und der l&#228;stige Geist Pech, denn Detektiv Frosch knackt diesen Fall ganz bestimmt! „Die Geisterinsel“ ist der erste Teil dieser preisgekr&#246;nten R&#228;tselreihe und hat den internationalen Hype um Detektiv Frosch ins Rollen gebracht.
+</p>
+<p>
+Im zweiten Fall, „Die unsichtbare Hexe“, begleiten wir den Detektiv in den Zauberforst. In einem friedlichen Dorf wurden die Vorbereitungen f&#252;r eine ausschweifende Willkommensfeier f&#252;r die neuste Einwohnerin sabotiert. Die neue Nachbarin scheint verschwunden und das Dorf versucht, sich von dem Schock zu erholen. Kann Detektiv Frosch der Sache auf den Grund gehen? Wir hoffen es, sonst w&#228;re dieses Spiel wohl eine ziemliche Entt&#228;uschung.
+</p>
+<p>
+Im aufregenden Finale der Reihe – „Korruption im Cowboy-Canyon“ – werden der Detektiv und Kommissar Hummer damit beauftragt, einen Sheriff f&#252;r ein sheriffloses Cowboy-St&#228;dtchen zu finden. Aber nichts ist, wie es scheint, und hinter der erstaunlich einfachen L&#246;sung des Falls verbirgt sich ein finsterer Plan. Vielleicht gibt es also doch Verbrechen …<br />
+Das letzte Spiel ist voller Wirrungen und Wendungen und bietet alles, was das Fanherz begehrt.
+</p>
+<p>
+„Frog Detective: Die gesammelten F&#228;lle“ ist eine familienfreundliche, geistreiche Hommage an das Genre der Detektivspiele. L&#252;fte die Geheimnisse allein oder spiele gemeinsam mit deinen Freunden und lest die Dialoge mit verteilten Rollen. Hast du das Zeug, diesen Fall zu l&#246;sen?
+</p>
+<p>
+Verf&#252;gbare Sprachen: Englisch, Franz&#246;sisch, Italienisch, Deutsch, Spanisch (Lateinamerika), Portugiesisch (Brasilien)
+</p>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

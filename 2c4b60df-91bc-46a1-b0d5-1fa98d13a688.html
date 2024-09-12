@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Zamarian</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Zamarian</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>Nicht gespielt</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-Nie">Nie</a> </TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:18:36</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:29:50</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-22.01.2016">22.01.2016</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Indie">Indie</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/429120" target="_blank">Steam</a><br/><a href="http://www.quarterpoundstudios.com" target="_blank">Official</a><br/><a href="https://www.twitch.tv/directory/game/Zamarian" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					Are you looking for a cool, action packed arcade classic that delivers an interesting, fun gameplay and a lot of variety? Do you want to challenge yourself in one of the most interesting space themed game worlds out there? Welcome to Zamarian, the one game where all of that and so much more comes to reality in an extraordinary way!<br><br>Your main focus here is to defeat the aliens that are trying to destroy your planet, all while assuring yourself that you will be the one true owner of this portion of your galaxy. Zamarian comes with easy to use controls and a unique gameplay experience that will change as you play.<br><br>We are also offering you beautiful graphics, an action-packed soundtrack that seamlessly blends rock and chiptune music as well as a multitude of bosses that will always try to eliminate you once and for all.<br><br>Zamarian also delivers a shiny, fun multiplayer component that allows you to immerse yourself into the gameplay, all while accessing some really interesting results. You can collect coins and gems to improve your chances of survival!<br><br>Don’t hesitate and download Zamarian right now, engage yourself into the ultimate battle for the galaxy and fulfill your destiny to become Earth’s final hope!<h2 class="bb_tag">Features:</h2><br><ul class="bb_ul"><li>Immersive singleplayer and multiplayer gameplay<br></li><li>Action packed boss battles<br></li><li>True arcade feel<br></li><li>Beautiful graphics<br></li><li>Wonderful soundtrack<br></li><li>Upgrade your ship and gems<br></li><li>Lots of replay value</li></ul><h2 class="bb_tag">Starter Tips:</h2><br><ul class="bb_ul"><li>The two rings at the center of the screen are boundaries that indicate the area where you can move your ship.  Move the green mouse cursor as close to your fighter ship as possible.<br></li><li>Collect gems in order to buy new ships and weapons. Use them wisely though!<br></li><li>The heavy fighter ship has the most health (with 3 green bars), while the light fighter ship has the least health (with only 1 green bar).<br></li><li>In order to remove floater bombs, buy the Guardian weapon (hotkey G).  This especially comes in handy with the Crab boss in level 4.<br></li><li>Each weapon has a hotkey that you can press in order to instantly buy them.  Ex: H for heavy fighter ship, 5 for Medusa weapon, and 6 for EMP, and etc.<br></li><li>Other hotkeys are P to pause game, E to fire EMP, F for fighter ship menu, and W for weapon menu.<br></li><li>There is no set amount of lives in this game.  Save yourself by buying another ship before the current one explodes.<br></li><li>You automatically get the light fighter after the heavy or medium fighter exploded.<br></li><li>If you hear him, brace yourself.  Because the Zamarian boss is coming.<br></li><li>Each of the three fighters have weapons that are mostly exclusive to each on of them.  All of the weapons are unique in their own way.  Try them all out.<br></li><li>If you decide to play a new game, your gems count will remain the same but your score will be erased.<br></li><li>Play the multiplayer mode if you want to farm for gems.<br></li><li>If nobody comes to your room in multiplayer in a few seconds a GO SOLO button will come up to allow you to experience the multiplayer mode solo.<br></li><li>Grab the booster after it turns green in the multiplayer mode.  This will enable your ship to become a heavy fighter with a powerful weapon, giving you an advantage over the other opponents.  However, use it wisely, as this power up has a time limit.</li></ul><h2 class="bb_tag">Game Review:</h2><h2 class="bb_tag">- Alex Tanase</h2>professional game reviewer<br><br><br><i>Zamarian is a cool little game that was created with the idea of providing a wonderful time away from those daily tasks. Rest assured that the title is not simple, instead it’s a reminiscence from the older, action packed and hard games that were designed in order to deliver one of a kind gameplay moments.<br><br>The coolest thing about Zamarian is that it allows you to control your ship unlike any other game, all while trying to explore the space at your own leisure and killing the enemies that come in your way. The title is designed by a lot of action and plenty of unique gameplay ideas, all of which add up to deliver a stellar outcome all the time. I liked the fact that this game is not afraid to take chances, instead it was designed with a wide range of action packed mechanics in mind. <br><br>There are multiple upgrades that you can perform to your vehicle, all of which add up in order to deliver a great shooting experience. The shooting mechanics are solid and the game is created all so that it will provide you with an action packed set of moments that you will always appreciate and enjoy.<br><br>Each level has its own boss, and while the first ones can be a simple challenge, the more you play the harder the game will get. The Zamarian alien, which is the ultimate, last boss will be very hard to defeat, and at the same time it also makes the game endless because it will basically grow new tentacles all the time.<br><br>All the ideas brought by the game are very interesting to be honest, and they do provide quite an interesting challenge all around, which is magical and tons of fun. I like the fact that you have 2 ships in the free version, because they do show you quite a lot of the game before you purchase. At the same time, I am also very impressed by the quality that they deliver, which is a major plus and a lot better than what you are used to from other titles in the genre.<br><br>This game screams retro memorabilia and it’s a good thing, in fact for me it basically revives the old school ideas and it brings them back in a colorful and fun way. I really liked it, and I do recommend Zamarian to everyone that wants a fun time regardless of where they are located!<br><br>9/10</i>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

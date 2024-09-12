@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Goose Goose Duck</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Goose Goose Duck</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>9m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-05.04.2024">05.04.2024</a> 2:55:02</TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:18:36</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:39:54</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Gespielt">Gespielt</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-03.10.2021">03.10.2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-84">84</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Gaggle Studios, Inc.">Gaggle Studios, Inc.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Massively Multiplayer Online (MMO)">Massively Multiplayer Online (MMO)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Multiplayer">Multiplayer</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://gaggle.fun/goose-goose-duck" target="_blank">Official</a><br/><a href="https://www.youtube.com/channel/UCFPjyvQSD9tiKCdWYliWWkg" target="_blank">YouTube</a><br/><a href="https://www.facebook.com/gaggle.fun" target="_blank">Facebook</a><br/><a href="https://twitter.com/gaggle_fun" target="_blank">Twitter</a><br/><a href="https://www.instagram.com/gaggle.fun" target="_blank">Instagram</a><br/><a href="https://discord.gg/j4aNAxSJ8E" target="_blank">Discord</a><br/><a href="https://www.reddit.com/r/Gaggle" target="_blank">Reddit</a><br/><a href="https://store.steampowered.com/app/1568590" target="_blank">Steam</a><br/><a href="https://www.twitch.tv/directory/game/Goose%20Goose%20Duck" target="_blank">Twitch</a><br/><a href="https://play.google.com/store/apps/details?id=com.Gaggle.fun.GooseGooseDuck" target="_blank">Android</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					Zeit, eine alberne Gans zu sein! Tauche ein in die verschiedenen Umgebungen/immer weiter wachsenden Umgebungen des Vogeluniversums in Goose Goose Duck. Ein Spiel der sozialen Deduktion, bei dem du und deine Mitgänse zusammenarbeiten müssen, um eure Mission zu erfüllen. Achte auf die bösartigen Stockenten und üblen Geflügel, die sich in dein Team eingeschlichen haben und alles tun werden, um dich aufzuhalten!<br><br>Spiele online mit 5-16 Spielern und arbeite zusammen (oder gegeneinander), um deine Ziele zu erreichen - sei es, am Leben zu bleiben, um einen weiteren Tag zu fliegen, oder sicherzustellen, dass du der letzte gefiederte Freund bist, der steht!<br><br>Während der Treffen versuche, die Gruppe mit Flausen und Täuschungen zu täuschen oder sei deinem Schwarm gegenüber treu und sprich die Wahrheit! Erfülle deine Aufgaben auf der ganzen Karte, um die Fortschrittsleiste zu füllen, oder stimme für die getarnten Raubvögel, um deine Mission abzuschließen.<br><br>Jede Karte bietet eine einzigartige Auswahl an Funktionen und Interaktionsmöglichkeiten mit Sabotagen, die die Sicht, die Kommunikation beeinträchtigen oder sogar Umwelttötungen durchführen können. Mit geheimen Durchgängen und Verstecken kannst du dich durch Lüftungsschächte, Spinde, Abwasserkanäle oder Nebel-Durchgänge schleichen, um die Herde zu täuschen.<h2 class="bb_tag"><strong>Funktionen:</strong></h2><ul class="bb_ul"><li> Integrierter Sprachchat mit der Option für Nähe-Chat<br></li><li> Über 50 Charakterrollen, darunter der Pelikan, die kanadische Gans und die Party-Ente<br></li><li> Mehr als 9 Kartenorte, einschließlich S.S. Mothergoose, Mallard Manor, dem Keller, Bloodhaven und Ancient Sands<br></li><li> Über 6 Spielmodi, darunter Klassisch, Draft, Korruptionsmodus und Süßes oder Saures<br></li><li> Eine Vielzahl von Kosmetikartikeln, um deine Gans mit Hüten, Kostümen, Haustieren, Pupsgeräuschen und Spieler-Bannern zu personalisieren<br></li><li> Private und öffentliche Spiellobby sowie eine Lounge mit Greifautomaten, in der du im Spiel verdiente Token gegen Kosmetikartikel und zusätzliche Gegenstände eintauschen kannst.<br></li><li> Saisonale und Feiertagsveranstaltungen, die den Task Race-Modus freischalten, um spezielle Token zu verdienen, mit denen du zeitlich begrenzte Kosmetikartikel und Gegenstände erhalten kannst!</li></ul><h2 class="bb_tag"><strong>Klassischer Modus / Entwurfsmodus</strong></h2>Vervollständige Aufgaben, bevor du sabotiert wirst, oder töte genug Gänse, um die Mission zu beenden. Wenn du die Enten entlarven kannst, stimme für ihre Ausscheidung aus dem Spiel!<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1568590/extras/classicsb2.gif?t=1723753069" /><br><br>Im Entwurfsmodus bekommt jeder Spieler eine versteckte Nummer zugewiesen. Wenn deine Nummer an der Reihe ist, kannst du zwischen drei Rollen wählen oder eine zufällige Rolle für das Spiel auswählen. <br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1568590/extras/draftsb1.gif?t=1723753069" /><br><br><ul class="bb_ul"><li> Wähle Rollen aus, die im Spiel erscheinen und die den Spielern zufällig zum Start zugewiesen werden.<br></li><li>Verschiedene Sabotagen und Mechanismen an unterschiedlichen Orten.<br></li><li>Treffen, um zu diskutieren und zu deduzieren, um bedrohliche gefiederte Mitglieder zu eliminieren.</li></ul><h2 class="bb_tag"><strong>Hoot &amp; Seek</strong></h2>Hoot &amp; Seek ist ein Social Deduction Verstecken und Suchen-Modus. Es gibt drei Rollen: Späher, Scharfschützen und die Eule. Als Jäger ist euer Ziel, die Eule zu lokalisieren und auszuschalten, um zu gewinnen. Als Eule lautet euer Ziel, zu überleben und sich in der Menge zu tarnen, während ihr Aufgabenziele erfüllt, um zu gewinnen.<br><ul class="bb_ul"><li> Erfordert mindestens 2 Spieler, maximal 5 Spieler.<br></li><li> Globaler Sprachchat, alle Spieler können miteinander sprechen und einander hören.</li></ul><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1568590/extras/ggd_soc_HnS-SteamSectionBanner.gif?t=1723753069" /><h2 class="bb_tag"><strong>Tastes Like Chicken</strong></h2>Tastes Like Chicken ist ein soziales Deduktions-Battle Royale. Beschütze das Hühnchen deines Teams und töte alle anderen. Die Teamkameraden wählen abwechselnd ihre Rollen aus. Teams bestehen aus einem Hühnchen und begleitenden Enten. <br><ul class="bb_ul"><li> Mindestens 8 Spieler erforderlich; 2 Teams mit je 4 Spielern, 4 Teams mit je 2 Spielern oder 2 Teams mit je 3 Spielern und einem Team mit 2 Spielern als mögliche Teamoptionen.<br></li><li> Exklusive Rollenauswahl im Modus.</li></ul><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1568590/extras/tlcsb2.gif?t=1723753069" /><h2 class="bb_tag"><strong>Korruptionsmodus</strong></h2>Eine anspruchsvollere und fortgeschrittene Version des Klassikmodus, der den Korruptionsmechanismus und mehrere mit Korruption zusammenhängende Rollen einführt. Korruptionstoken können überall auf der Karte gesammelt werden, um die Abklingzeiten von Sabotagen zu verkürzen oder die Fähigkeiten der Enten zu verstärken. Für eine Gans kann das Aufnehmen von Korruption oder das Korruptwerden zu einigen Sichtbeeinträchtigungen führen, die tödlich sein können. Vervollständige deine Aufgaben, um deine Korruption zu heilen!<br><ul class="bb_ul"><li> Exklusive Rollen und Sabotagen im Modus.<br></li><li> Tag-/Nacht-Zyklus </li></ul><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1568590/extras/corruptionsbnew.gif?t=1723753069" /><h2 class="bb_tag"><strong>Gänsejagd</strong></h2>Eine Killer-Ente läuft frei herum und versucht, alle anderen zu töten, bevor die Zeit abläuft. Gänse können Aufgaben erfüllen, um die Zeit zu verkürzen, oder sie können sich verstecken. Durch das Erfüllen einer Aufgabe wird der Timer um 4 Sekunden verkürzt, wenn die Ente lebt, und um 1 Sekunde, wenn sie tot ist. In den letzten 60 Sekunden des Spiels erhält die Ente einen Geschwindigkeitsschub.<h2 class="bb_tag"><strong>Dine and Dash</strong></h2>Das rote Team aus sich verwandelnden Enten versucht, das blaue Team zu töten, bevor der Timer abläuft. Das blaue Team ist ein Geier, der den Timer verkürzt, indem er Leichen frisst, und ist mit einem Falken zusammen, der in Spielen mit mehr als 6 Spielern schneller tötet als die Enten. Empfohlen für private Spiele mit 10 oder mehr Spielern und Proximity-Chat.<h2 class="bb_tag"><strong>Süßes oder Saures</strong></h2>Die Dorfbewohner erledigen Aufgaben, um Treffen einzuberufen. Stimmt für das Monster oder überlebt, um zu gewinnen. Das Monster hat die Fähigkeit, Spieler in Knechte zu verwandeln und auf seine Seite zu ziehen. Knechte werden durch die Fähigkeiten des Monsters gestärkt und bieten unterschiedliche Vorteile, in der Hoffnung, die gesamte Lobby zu gewinnen.<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1568590/extras/totsbnew.gif?t=1723753069" /><h2 class="bb_tag"><strong>Kosmetik</strong></h2>Passe deine Gans mit über 1000 kosmetischen Artikeln an, darunter Hüte, Kostüme, Pupse, Haustiere, Todesstacheln, Spielerkarten und Banner! Und es stehen 20 Farben für deine Gans zur Auswahl. Drücke dich aus, kleide dich albern, schlüpfe in eine Rolle, mixe und kombiniere!<h2 class="bb_tag"><strong>Errungenschaften</strong></h2>Durch Gameplay und Modi gibt es Errungenschaften, die zusätzliche Kosmetik freischalten können. Verdienen dir Belohnungen und erreiche Meilensteine, während du spielst!<br><br><br>Trete unserem Community-Discord bei, um Feedback und Ideen einzureichen, Fragen zu stellen und Gruppen zum Spielen zu finden!<br><a href="https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fdiscord.gg%2Fggd" target="_blank" rel=" noopener"  ><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1568590/extras/Discord_JOINpng_copy.png?t=1723753069" /></a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

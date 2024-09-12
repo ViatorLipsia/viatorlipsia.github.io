@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>F1 Manager 2023</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> F1 Manager 2023</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>Nicht gespielt</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-Nie">Nie</a> </TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:13:30</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:15:31</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-Microsoft X Cloud">Microsoft X Cloud</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-31.07.2023">31.07.2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Racing">Racing</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Simulator">Simulator</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Sport">Sport</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Frontier Developments">Frontier Developments</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Frontier Developments">Frontier Developments</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.f1manager.com/f1-manager-2023" target="_blank">Official</a><br/><a href="https://store.steampowered.com/app/2287220/F1_Manager_2023/" target="_blank">Steam</a><br/><a href="https://store.epicgames.com/en-US/p/f1-manager-2023" target="_blank">Epic</a><br/><a href="https://en.wikipedia.org/wiki/F1_Manager_2023" target="_blank">Wikipedia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<p>
+Die spannende Welt der F1&#174; erwacht in F1&#174; Manager 2023 ein weiteres Mal zum Leben. 23 Rennen, sechs F1&#174; Sprint-Events, neue Autos, neue Rennstrecken mit Highlights wie dem Las Vegas Street Circuit, neue Fahrer, neue Herausforderungen ... Deine Legende beginnt hier.&#160;
+</p>
+<p>
+F1&#174; Manager 2023 fordert dich heraus, das F1&#174;-Team deiner Wahl zu leiten. Beginne deine Karriere als Teamchef eines der 10 F1&#174;-Teams und verwalte alle Einzelheiten von der Fabrik &#252;ber die Garage bis hin zur Startaufstellung.&#160;
+</p>
+<p>
+Erlebe Darstellungen der Trainings, des Qualifyings und aller Renntage der Saison und noch viel mehr in sendereifer Pr&#228;sentation.&#160;
+</p>
+<p>
+Dank detailierter Management-Systeme hast du die volle Kontrolle &#252;ber deine Fahrer, dein Team und dein Auto. Deine Entscheidungen bestimmen den Verlauf der Saison&#160;
+</p>
+<p>
+Neuer Modus: Rennwiederholungen&#160;<br />
+Erlebe aufregende Rennen und die wichtigsten Momente der FIA Formula 1 &#174; World Championship™ 2023 mit Rennwiederholungen – einem brandneuen Modus, der dir die Spannung und das Drama der F1&#174; noch n&#228;her bringt.&#160;
+</p>
+<p>
+„Startaufstellung“ stellt die Rennbedingungen und die Startpositionen der Fahrer f&#252;r jedes Rennen der Saison 2023 basierend auf Daten aus den tats&#228;chlichen F1&#174;-Rennen nach und „Rennmomente“ geben dir die M&#246;glichkeit, in einem entscheidenden Moment eines echten Rennens aus der Saison 2023 die Kontrolle &#252;ber ein bestimmtes Team zu &#252;bernehmen.&#160;
+</p>
+<p>
+Egal, ob du Aston&#160;Martin in Monaco &#252;bernimmst und Alonso zu seinem ersten Sieg der Saison verhelfen willst oder ob du McLaren helfen willst, seine Punkte nach einem chaotischen GP zu behalten, Rennmomente fordern dich dazu heraus, inherhalb von Sekunden Entscheidungen zu treffen, die das Blatt wenden k&#246;nnen.&#160;&#160;
+</p>
+<p>
+Optimierte Rennsimulation&#160;<br />
+Durch vebesserte Ideallinien, &#220;berholman&#246;ver und Zwischenf&#228;lle sind die Rennen dramatischer und dynamischer als je zuvor. Verbesserungen an den Fahrer-KIs, den Entscheidungen gegnerischer Teams und der Simulation der Reifentemperatur bieten gr&#246;&#223;ere Herausforderungen in realistisch dargestellen F1&#174;-Rennen.&#160;
+</p>
+<p>
+Mit der nagelneuen Helmkamera bist du dem Renngeschehen n&#228;her als jemals zuvor. Setze dich zu einem der 20 Fahrer auf die Strecke und erlebe die Spannung eines Rennens der Formula 1&#174; aus dieser Perspektive.&#160;&#160;
+</p>
+<p>
+Taktiken und Selbstvertrauen der Fahrer&#160;<br />
+Erlebe mit den Fahrern ihre besten und schwierigsten Momente, w&#228;hrend sie um den Sieg k&#228;mpfen. Eine unvorhergesehene Wendung im Wettkampf, ein Fehler der Boxencrew oder ein gescheitertes &#220;berholman&#246;ver k&#246;nnen sich auf das Selbstvertrauen deines Fahrers auswirken. W&#228;ge die Risiken genau ab und nutze die Optionen f&#252;r Fahrer-Taktiken, um deinen Fahrern zu sagen, wie sie das Rennen angehen sollen und ihnen dabei zu helfen, bei den Positionsk&#228;mpfen die Nase vorn zu behalten.&#160;
+</p>
+<p>
+Verbessertes Managementerlebnis&#160;<br />
+Messe dich auf dem h&#246;chsten Level des Motorsports mit mehr Tiefe und Detail denn je. Die Leistung deiner Fahrer wird mit zunehmendem Alter nachlassen, also sieh dich in den simulierten Rennen der Meisterschaften in der F2™ und F3™ nach den Talenten der n&#228;chsten Generation um. Durchbr&#252;che in der Autoentwicklung sind wichtiger denn je, um nicht von der verbesserten Renn-KI abgeh&#228;ngt zu werden. Finde das Gleichgewicht zwischen Leistungsoptimierung und der Notwendigkeit, weniger belastbare Teile auszutauschen.&#160;
+</p>
+<p>
+Stelle einen erfahrenen Sportdirektor ein und er&#246;ffne dir die M&#246;glichkeit, den Trainingsplan deiner Boxencrew anzupassen und so die F&#228;higkeiten der Crew zu verfeinern, um dir am Rennwochenende den Erfolg zu sichern, kostspielige Fehler zu vermeiden und die Auszeichnung f&#252;r den schnellsten Boxenstopp zu gewinnen.&#160;
+</p>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

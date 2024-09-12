@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Quake II</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Quake II</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>Nicht gespielt</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-Nie">Nie</a> </TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:13:31</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:18:44</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-Microsoft X Cloud">Microsoft X Cloud</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-10.08.2023">10.08.2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-74">74</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-98">98</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Shooter">Shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-id Software">id Software</a><br/><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Machine Studios">Machine Studios</a><br/><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Nightdive Studios">Nightdive Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Bethesda Softworks">Bethesda Softworks</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/2320" target="_blank">Steam</a><br/><a href="https://facebook.com/quake" target="_blank">Facebook</a><br/><a href="https://twitter.com/quake" target="_blank">Twitter</a><br/><a href="https://instagram.com/quake" target="_blank">Instagram</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<p>
+Quake II ist ein gefeierter FPS, der von id Software 1997 entwickelt wurde und eine komplett neue Sci-Fi-Geschichte und -Welt einf&#252;hrte. Erleben Sie jetzt die authentische, verbesserte und komplette Version des Originals.
+</p>
+<p>
+<br />
+Features
+</p>
+<p>
+• Erleben Sie den aufpolierten milit&#228;rischen Sci-Fi-FPS.
+</p>
+<p>
+• Holen Sie sich die originalen Missionspakete „The Reckoning“ und „Ground Zero“.
+</p>
+<p>
+• Spielen Sie die brandneue Erweiterung „Call of the Machine“.
+</p>
+<p>
+• Holen Sie sich kostenlos Quake II 64.
+</p>
+<p>
+• Online- und lokaler Multiplayer bzw. Koop
+</p>
+<p>
+• Spielen Sie plattform&#252;bergreifend mit anderen dank Crossplay.
+</p>
+<p>
+• Nehmen Sie Quake II &#252;berallhin mit dank xCloud-Portabilit&#228;t.
+</p>
+<p>
+Erleben Sie das aufpolierte Original
+</p>
+<p>
+Genie&#223;en Sie die originale, authentische Version von Quake II, jetzt mit Unterst&#252;tzung f&#252;r 4K* und Widescreen-Aufl&#246;sung, aufpolierten Modellen, verbesserten Gegner-Animationen und detaillierterem Gemetzel, gesch&#228;rftem und wiederhergestelltem KI-Verhalten, &#252;berarbeiteten Zwischensequenzen, dynamischer und farbiger Beleuchtung, Anti-Aliasing, Tiefensch&#228;rfe, dem originalen Heavy-Rock-Soundtrack von Sonic Mayhem und vielem mehr.
+</p>
+<p>
+Spielen Sie die intensive milit&#228;rische Sci-Fi-Kampagne
+</p>
+<p>
+Die Menschheit befindet sich mit den Strogg im Krieg, einer feindlichen Alienspezies, die die Erde angegriffen hat. Im Gegenzug hat die Menschheit eine Attacke auf den Heimatplaneten der Strogg ausgef&#252;hrt&#160;... Sie schlug fehl, aber Sie haben &#252;berlebt. Ganz allein m&#252;ssen Sie sich nun Ihren Weg durch die Milit&#228;rbasen bahnen und die Kriegsmaschine des Gegners lahmlegen. Das Schicksal der Menschheit liegt in Ihren H&#228;nden.
+</p>
+<p>
+Holen Sie sich beide Missionspakete
+</p>
+<p>
+Quake II enth&#228;lt beide Original-Missionspakete: „The Reckoning“ mit 18&#160;Kampagnenleveln und 7&#160;Deathmatch-Maps und „Ground Zero“ mit 15&#160;Kampagnenleveln und 14&#160;Deathmatch-Maps.
+</p>
+<p>
+Missionspaket: The Reckoning
+</p>
+<p>
+In der ersten offiziellen Erweiterung f&#252;r Quake&#160;II infiltrieren Sie als Teil einer Eliteeinheit eine Anlage der Strogg. Sie m&#252;ssen sich durch eine Landschaft aus Stahl und Beton, durch Luftsch&#228;chte, Kan&#228;le und t&#252;ckische Schluchten voll wilder Mutanten schlagen, sich an Bord eines Raumschiffs schmuggeln und die geheime Mondbasis des Gegners vernichten.
+</p>
+<p>
+Missionspaket: Ground Zero
+</p>
+<p>
+In der zweiten offiziellen Erweiterung von Quake&#160;II haben Sie und ein paar andere gl&#252;ckliche Marines es in einem St&#252;ck an die Oberfl&#228;che von Stroggos geschafft, um die Flotte zu kontaktieren. Denn der Gravity Well, die neueste Waffe der Strogg gegen die Menschheit, ist funktionsf&#228;hig. Da Ihre Flotte Ihnen allerdings nicht zu Hilfe eilen kann und ein gro&#223;er Teil der Bodentruppen vernichtet wurde, liegt es an Ihnen, Ihre Kameraden zu befreien und den Gravity Well zu zerst&#246;ren.
+</p>
+<p>
+Spielen Sie die brandneue Erweiterung „Call of the Machine“
+</p>
+<p>
+Ein brandneues Quake&#160;II-Erlebnis von MachineGames, das aus 28&#160;Kampagnenleveln und einer Multiplayer-Deathmatch-Map besteht. In den Tiefen des Strogg-Raums ruht die Maschine, die das Gef&#252;ge der Realit&#228;t zerst&#246;ren kann. K&#228;mpfen Sie sich durch Raum und Zeit, um den Strogg-Sch&#246;pfer zu finden, ihn zu zerst&#246;ren und das Schicksal von Mensch und Maschine zu &#228;ndern.
+</p>
+<p>
+Holen Sie sich kostenlos Quake II 64
+</p>
+<p>
+Genie&#223;en Sie alle 19&#160;Kampagnenlevel, 10&#160;Multiplayer-Deathmatch-Maps und einen zus&#228;tzlichen Originalsoundtrack in dieser Version des originalen Quake&#160;II&#160;64.
+</p>
+<p>
+Online- und lokaler Multiplayer bzw. Koop
+</p>
+<p>
+Bek&#228;mpfen Sie die feindseligen Strogg in der d&#252;steren, milit&#228;rischen Sci-Fi-Kampagne und den Erweiterungen mit bis zu vier Spieler:innen online oder im lokalen Splitscreen-Koop-Modus und messen Sie sich in herrlichen Retro-K&#228;mpfen mit Unterst&#252;tzung f&#252;r 16&#160;Spieler:innen (online), *vier Spieler:innen (lokaler Splitscreen) oder *acht Spieler:innen (lokaler Splitscreen). Bot-Unterst&#252;tzung f&#252;r Offline- und Online-DM- und und TDM-Modi inklusive.<br />
+Gemeinsames Spiel via Crossplay
+</p>
+<p>
+Spielen Sie zusammen mit anderen die Kampagne und die Erweiterungen oder messen Sie sich mit Freund:innen in Multiplayer-Matches&#160;– egal, auf welcher Plattform Sie spielen!
+</p>
+<p>
+Nehmen Sie Quake II &#252;berallhin mit dank xCloud-Portabilit&#228;t
+</p>
+<p>
+Spielen Sie Quake II, wo immer Sie wollen, mit der Xbox xCloud, die nur f&#252;r Game&#160;Pass&#160;Ultimate-Spieler:innen verf&#252;gbar ist.
+</p>
+<p>
+<br />
+*Die maximale Aufl&#246;sung variiert je nach Plattform.
+</p>
+<p>
+*Unterst&#252;tzt den lokalen 4-Spieler-Multiplayer-Modus mit Splitscreen auf Xbox&#160;One.
+</p>
+<p>
+*Unterst&#252;tzt den lokalen 8-Spieler-Multiplayer-Modus mit Splitscreen auf Xbox&#160;Series&#160;S|X. 
+</p>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Battlestar Galactica Deadlock</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Battlestar Galactica Deadlock</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>Nicht gespielt</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-Nie">Nie</a> </TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:18:36</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:41:32</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-31.08.2017">31.08.2017</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-66">66</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Simulator">Simulator</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Strategy">Strategy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Black Lab Games">Black Lab Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Slitherine Ltd.">Slitherine Ltd.</a><br/><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Slitherine Software UK Ltd.">Slitherine Software UK Ltd.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://www.slitherine.com/bsgdeadlock" target="_blank">Official</a><br/><a href="https://store.steampowered.com/app/544610" target="_blank">Steam</a><br/><a href="https://www.gog.com/game/battlestar_galactica_deadlock" target="_blank">GOG</a><br/><a href="https://m.twitch.tv/directory/game/Battlestar%20Galactica%20Deadlock" target="_blank">Twitch</a><br/><a href="https://en.wikipedia.org/wiki/Battlestar_Galactica_Deadlock" target="_blank">Wikipedia</a><br/><a href="https://battlestargalacticadeadlock.fandom.com/wiki/Battlestar_Galactica:_Deadlock" target="_blank">Wikia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">Die Zylonen rebellieren!</h2><br>Vier lange Kriegsjahre und unendlich viele Tote haben nicht ausgereicht, um eine dramatische Pattsituation aufzulösen. Die Kolonien konnten zwar bisher alle zylonischen Angriffe abwehren, aber noch konnte kein entscheidender Sieg errungen werden. <br><br>Die Lage ändert sich jedoch schlagartig mit einem Überraschungsangriff der Zylonen und der brutalen Auslöschung des Oberkommandos der kolonialen Flotte auf Picon. Das Schicksal der Menschheit liegt nun in den Händen von Rear Admiral Lucinda Cain. <br><br>Der gerissene Geheimplan, den sie sich ausgedacht hat, könnte dem Krieg ein für alle Mal ein Ende bereiten...<h2 class="bb_tag">Das Spiel</h2><br>BATTLESTAR GALACTICA Deadlock™ versetzt Sie mitten hinein in den Ersten Zylonenkrieg, in dem epische 3D-Schlachten Ihr ganzes taktisches Können auf die Probe stellen werden. <br><br>Übernehmen Sie von der Brücke der Daidalos – einer mobilen Werft – aus die Kontrolle über die koloniale Flotte und bereiten Sie der zylonischen Bedrohung für die Zwölf Kolonien ein Ende. Erstellen Sie Ihre Flotten, beschützen Sie die Allianz der Zwölf Kolonien und decken Sie die Verschwörungen in diesem heroischen Konflikt auf.<h2 class="bb_tag">Befehligen Sie die koloniale Flotte</h2><br>Entwerfen und erstellen Sie Flotten aus beeindruckenden Großraumschiffen. Rekrutieren Sie Offiziere zum Schutz der Zwölf Kolonien. Sie haben dabei die freie Wahl – von der Manticore-Korvette bis zum überwältigenden Jupiter-Battlestar. An Feuerkraft wird es Ihnen mit Sicherheit nicht mangeln.<h2 class="bb_tag">Legendäre Namen</h2><br>Setzen Sie in einer neuen Story im Ersten Zylonenkrieg die Saga um den Battlestar Galactica™ mit neuen Charakteren und bekannten Gesichtern fort. Starten Sie Viper-Geschwader, setzen Sie Raptor-Spähtrupps ein und führen Sie Sprünge mit der Galactica aus, um die Schlachtfelder zu dominieren. Eine authentische „Battlestar Galactica™“-Erfahrung erwartet Sie.<h2 class="bb_tag">WEGO-3D-Taktikschlachten</h2><br>Packende taktische Raumschlachten komplett in 3D werden Sie mitreißen. Erteilen Sie Ihrer Flotte von Großraumschiffen Befehle und genießen Sie danach in pausierbarer Echtzeit die explosive Umsetzung Ihrer Anweisungen in umwerfenden Umgebungen.<h2 class="bb_tag">Kriegspolitik</h2><br>Von der Brücke der Daidalos-Werft aus kommandieren Sie die gesamte koloniale Flotte. Bauen Sie Ihre Truppen auf und springen Sie mit ihnen durch das aus vier Quadranten bestehende Cyrannus-Sonnensystem. Beschützen Sie die Kolonien und sorgen Sie für Einheit im Zwölferrat – denn ansonsten wird die Allianz in die Brüche gehen und es wird ein neues Zeitalter der Zylonenherrschaft anbrechen.<h2 class="bb_tag">Die zylonische Bedrohung</h2><br>Machen Sie sich auf einen unerbittlichen Gegner gefasst. Wehren Sie Geschwader von zylonischen Raider-Schiffen und Raketensalven von Basissternen ab. Setzen Sie darauf, dass Ihre Marines der gegnerischen Zenturio-Entertrupps Herr werden, während gleichzeitig Ihre Firewalls die Hacking-Angriffe der elektronischen Wardriver-Schiffe erschweren. Schalten Sie Baupläne für neue Schiffe, Munitionsarten und Geschwader frei, die Ihnen beim Kampf gegen Ihren gnadenlosen Feind wertvolle Dienste leisten werden.<h2 class="bb_tag">Gemeinsames Spektakel</h2><br>Genießen Sie Battlestar-Mehrspielerspaß wie nie zuvor! Messen Sie sich mit Ihrem Gegner in fantastischen 1-vs-1-Flottenschlachten.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>AION Free-to-Play</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> AION Free-to-Play</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>20h 16m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-25.08.2020">25.08.2020</a> 14:42:40</TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:18:35</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:26:42</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Gespielt">Gespielt</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-"></a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/261430/extras/2018-09-05_AI_Steam_Store_Page_Description_1_DE.png?t=1706629117" /><h2 class="bb_tag">NUR WO LICHT IST, FÄLLT AUCH SCHATTEN</h2><br>Die Welt Atreia liegt in Scherben. Hass und Missgunst zwischen den Völkern wachsen unaufhörlich: Während die Elyos auf der hellen Seite des Planeten ein Leben ohne Einschränkungen führen, fristen die Asmodier ein trostloses Dasein in ewiger Finsternis. Entscheide dich für eine Seite und ziehe für deine Fraktion in den Kampf um die Zukunft Atreias. Es erwarten dich Abenteuer in atemberaubender Grafik: Erkunde die Licht- und Schattenseiten dieser geschundenen Welt oder stelle dich anderen Spielern im PvP. Nur die tapfersten Helden werden in den Kreis der Daeva aufgenommen. Mit ihren anmutigen Schwingen sind diese Wesen den Menschen in Geschick und Stärke weit überlegen.<br><br><strong>Bist du bereit für das Abenteuer deines Lebens? Dann beweise es – in AION, dem kostenlosen Fantasy-MMORPG!</strong><br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/261430/extras/2018-09-05_AI_Steam_Store_Page_Description_2_DE.png?t=1706629117" /><h2 class="bb_tag">ERLEBE AION</h2><br><ul class="bb_ul"><li>Erschaffe einen Helden nach deinen Vorstellungen.<br></li><li>Wähle aus 6 Klassen, 12 Spezialisierungen und unzähligen Items.<br></li><li>Erkunde Atreia, eine faszinierende Welt voller Licht und Schatten.<br></li><li>Bestreite dynamische PvPvE-Schlachten mit hunderten Spielern und NPCs.<br></li><li>Erlebe ein rasantes Gameplay und einen schnellen Spielfortschritt.<br></li><li>Stürze dich in das Abenteuer deines Lebens – am Boden und in der Luft!</li></ul><h2 class="bb_tag">UPDATE 7.7: JETZT LIVE: GEFÄNGNIS DER ZEIT</h2>Neue packende Inhalte für PvP- und PvE-Spieler. AION 7.7 – Gefängnis der Zeit ist jetzt live auf den europäischen Servern – freue dich auf neue Inhalte, spannende Herausforderungen und Verbesserungen an deinem Lieblingsspiel!<br><br><ul class="bb_ul"><li>PvPvE-Schlachtfeld Tempus Fugit: Hier kämpfen AION-Veteranen beider Fraktionen am Ende gegen ein starkes Monster. Als Belohnung winkt brandneue ultimative PvP-Ausrüstung!<br></li><li>PvE-Dungeon Beshmundirs Sturmtempel: Dieser Dungeon wurde erneuert! Lass dich von fünf Freunden begleiten und mit ultimativer PvE-Ausrüstung belohnen.<br></li><li>Ultimative Ausrüstung: Stelle nagelneue ultimative Ausrüstung mittels Magische Fertigung her oder hole sie dir beim Feld-Ruhm-Preisverleiher.<br></li><li>Glyphen machen dich stärker: Wähle aus 12 verschieden Glyphen, die sich vorteilhaft auf die Widerstandswerte deines Helden auswirken.<br></li><li>Lumiels Morphkünste: Du hast unnötige Gegenstände? Dann lass die Macht des Äthers deine Items durchdringen und stelle neue Gegenstände her, die du dringender brauchst.<br></li><li>Gegenstandskollektion: Registriere verschiedene Items in deiner Kollektion. Deine Belohnungen werden besser, je mehr Kollektionen du gesammelt hast.<br></li><li>Noch mehr: Neben vielen neuen Inhalten haben wir auch die Lugbug-Missionen sowie den Feld-Ruhm-Preisverleiher verbessert – probiere es jetzt aus.</li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

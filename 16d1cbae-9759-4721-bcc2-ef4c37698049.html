@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>XCOM: Chimera Squad</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> XCOM: Chimera Squad</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>Nicht gespielt</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-Nie">Nie</a> </TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:18:36</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:39:51</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-24.04.2020">24.04.2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-71">71</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Strategy">Strategy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Tactical">Tactical</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Firaxis Games">Firaxis Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-2K">2K</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/882100/XCOM_Chimera_Squad/" target="_blank">Steam</a><br/><a href="https://www.xcom.com/" target="_blank">Official</a><br/><a href="https://twitter.com/XCOM" target="_blank">Twitter</a><br/><a href="https://www.instagram.com/xcomgame" target="_blank">Instagram</a><br/><a href="https://www.youtube.com/xcom" target="_blank">YouTube</a><br/><a href="https://www.twitch.tv/directory/game/XCOM%3A%20Chimera%20Squad" target="_blank">Twitch</a><br/><a href="https://www.facebook.com/XCOM?brand_redir=926041504143505" target="_blank">Facebook</a><br/><a href="https://www.reddit.com/r/Xcom" target="_blank">Reddit</a><br/><a href="https://xcom.fandom.com/wiki/XCOM:_Chimera_Squad" target="_blank">Wikia</a><br/><a href="https://en.wikipedia.org/wiki/XCOM:_Chimera_Squad" target="_blank">Wikipedia</a><br/><a href="https://www.gog.com/game/xcom_chimera_squad" target="_blank">GOG</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<i>XCOM: Chimera Squad</i> liefert eine komplett neue Geschichte und eine &quot;&quot;turn-based&quot;&quot; taktische Kampf-Erfahrung im XCOM-Universum.<br><br>Nach Jahren der Fremdherrschaft hat die Menschheit den Krieg um die Erde gewonnen. Aber als die Herren den Planeten verließen, ließen sie ihre ehemaligen Soldaten zurück. Und jetzt, fünf Jahre nach der Handlung von XCOM 2, arbeiten Menschen und Aliens zusammen, um eine Zivilisation aus Kooperation und Koexistens aufzubauen.<br><br>Willkommen in der City 31, einem Modell des Friedens in einer post-invasiven Welt. Allerdings scheinen nicht alle Erdenbewohner diese Allianz aus verscheidenen Spezien zu begrüßen. <i>Chimera Squad</i>, ein Elitetrupp aus Mensch- und Alieneinheiten, muss zusammen gegen die Untergrund-Bedrohungen kämpfen, die im Begriff sind, die Stadt ins Chaos zu führen.<br><br>Deine Einheiten sind einzigartig: Jede von ihnen ist mit besonderen taktischen Fähigkeiten ausgestattet und alle haben jeweils unterscheidliche Motivationen, der Chimera Squad beizutreten. Stelle Team-Mitglieder gezielt auf, um den Gefahren, die in der City 31 lauern, auf den Grund zu gehen und sie zu bekämpfen. Führe die Chimera Squad zu einer neuen Erfahung, die sich innovativ zeigt durch XCOMs &quot;&quot;turn-based&quot;&quot;-Vermächtnis. Wende Strategie, Teamwork und das neue &quot;&quot;breach-and-clear&quot;&quot;-Gameplay an, um deine Missionsaufgaben zu erfüllen.<br><br>Die Zukunft der City 31 hängt von dir ab.<h2 class="bb_tag">Einzigartige Alien- und Menschen-Einheiten</h2><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/882100/extras/GAMEPLAY_ACTION_POSE.gif?t=1603903072" /><br>Jede der 11 Einheiten hat ihre eigene Persönlichkeit und taktischen Fähigkeiten, inklusive spezien-spezifische Angriffe wie Vipers Zungenangriff.<h2 class="bb_tag">Spezialisierte Klassen</h2><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/882100/extras/CHERUB_BUFF.gif?t=1603903072" /><br>Führe vernichtende Kombos aus, indem du den richtigen Trupp mit der jeweiligen kooperativen Aktion verbindest. Die Richtige Team-Zusammensetzung kann über Erfolg und Misserfolg der jeweiligen Mission entscheiden.<h2 class="bb_tag">Neugestalteter Taktischer Kampfmodus</h2><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/882100/extras/ZEPHYR_KICK.gif?t=1603903072" /><br>Missionen sind als eine Folge diskreter, explosiver Begegnungen strukturiert, die die Action intensiv und unberechenbar gestalten.<h2 class="bb_tag">Vorstossmodus</h2><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/882100/extras/CHERUB_BLUEBLOOD.gif?t=1603903072" /><br>Lege das Schlachtfeld zu deinem Vorteil aus, indem du die neue Kampf-Phase anwendest, die deine Truppe mitten in die Action schleudert. Weise deine Truppen strategisch geschickt verschiedenen Eintrittspunkten zu und koordiniere ihre Angriffe mit einer Reihe Vortsoss-spezifischer Fähigkeiten.<h2 class="bb_tag">Verschachtelte Runde</h2><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/882100/extras/TURN_ORDER.gif?t=1603903072" /><br>Ein automatisches Initiativensystem weist Truppen unterscheidliche Slots in Runden zu und kreiert somit neue strategische Möglichkeiten, basierend auf der nächsten, eingereihten Einheit und außerdem baiserend auf dem ausgesetzten Risiko gegenüber der jeweiligen Truppe.<h2 class="bb_tag">Spannende Strategie</h2><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/882100/extras/TABLE_POINT_LOOP.gif?t=1603903072" /><br>Manage die Abläufe eines high-tech Hauptquartiers, in welchem du diverse Aufgaben priorisieren, Untersuchungen anordnen und Truppen ein- und anordenen musst - und das alles unter Zeitdruck. Versuche die immer größer werdende Gefahr der Anarchie abzuwenden, die durch die Unruhe in den verschiedenen Stadtteilen der City 31 ausgelöst wird.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

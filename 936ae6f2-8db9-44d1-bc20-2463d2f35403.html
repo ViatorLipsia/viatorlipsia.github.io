@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>MARVEL SNAP</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> MARVEL SNAP</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>2h 28m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-30.07.2024">30.07.2024</a> 19:13:49</TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 20:35:35</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 20:37:38</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Gespielt">Gespielt</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-18.10.2022">18.10.2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-77">77</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-85">85</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Card & Board Game">Card & Board Game</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Second Dinner">Second Dinner</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Nuverse Games">Nuverse Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Multiplayer">Multiplayer</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://twitter.com/marvelsnap" target="_blank">Twitter</a><br/><a href="https://www.marvelsnap.com/" target="_blank">Official</a><br/><a href="https://store.steampowered.com/app/1997040" target="_blank">Steam</a><br/><a href="http://itunes.apple.com/us/app/id1592081003#?platform=iphone" target="_blank">iPhone</a><br/><a href="http://itunes.apple.com/us/app/id1592081003#?platform=ipad" target="_blank">iPad</a><br/><a href="https://www.twitch.tv/directory/game/Marvel%20Snap" target="_blank">Twitch</a><br/><a href="https://play.google.com/store/apps/details?id=com.nvsgames.snap" target="_blank">Android</a><br/><a href="https://www.youtube.com/channel/UCgsbO683Z1-_FknDdKmyrMA" target="_blank">YouTube</a><br/><a href="https://discord.gg/invite/97HFh4BXe8" target="_blank">Discord</a><br/><a href="https://www.reddit.com/r/MarvelSnap/" target="_blank">Reddit</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					MARVEL SNAP ist ein rasantes, preisgekröntes Sammelkartenspiel mit innovativen Spielmechaniken, welches als &quot;einsteigerfreundlich und einfach nur brillant&quot; und als &quot;eines der besten Kartenspiele&quot; der heutigen Zeit bezeichnet wurde.<br><br>Stelle ein Deck aus 12 Karten zusammen. Jede Karte repräsentiert einen Marvel-Superhelden oder -Schurken und hat einmalige Vorzüge oder einen einzigartigen Effekt. Ziel des Spiels ist es, deinen Gegner zu überlisten und auszutricksen. Die Spielmechaniken sind in wenigen Minuten erlernt und die Matches dauern nur 3 Minuten.<br>Lade es jetzt herunter und mach dir selbst ein Bild!<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1997040/extras/德语-DE标题1.jpg?t=1704254289" /><br>Kein lästiges Warten mehr! Jedes Match dauert nur etwa drei Minuten. Wir haben den Schnickschnack entfernt, um den Fokus auf das Wesentliche zu legen.<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1997040/extras/德语-DE标题2.jpg?t=1704254289" /><br>Das Spiel ist so konzipiert, dass sich jedes Match anders anfühlt. Spiele deine Karten an mehr als 50 verschiedenen Schauplätzen aus dem Marvel-Universum, jeder mit ikonischen, spielverändernden Effekten. Von Asgard bis Wakanda werden regelmäßig neue Standorte ins Spiel gebracht, um deine kreativen Problemlösungsfähigkeiten auf die Probe zu stellen.<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1997040/extras/德语-DE标题3.jpg?t=1704254289" /><br>Jeder Spieler beginnt mit einem kostenlosen Startdeck. Von da an kannst du dir neue Karten für deine Sammlung verdienen, indem du einfach das Spiel spielst und seine Mechaniken meisterst. Im Gegensatz zu anderen Vertretern des Sammelkartenspiel-Genres gibt es in MARVEL SNAP keine Karten-Packs. Spiele mehr, um dir mehr Karten zu verdienen.<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1997040/extras/德语-DE标题4.jpg?t=1704254289" /><br>Verfügbar für Mobile UND Desktop-PC. Spiele wo und wann immer du willst. Registriere dein Konto und dein Fortschritt bleibt über verschiedene Plattformen hinweg erhalten.<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1997040/extras/德语-DE标题5.jpg?t=1704254289" /><br>Der &quot;SNAP&quot; ist eine einzigartige Spielmechanik in MARVEL SNAP, durch die du den Einsatz in einem Match erhöhen kannst, um Druck auf deinen Gegner auszuüben. Benutze die &quot;SNAP&quot;-Mechanik zum Beispiel, wenn du denkst, dass du das Match gewinnen wirst, um den Einsatz und somit deine potenzielle Belohnung zu verdoppelt. Und auch, falls du nur bluffst: du könntest so trotzdem deine Belohnung verdoppeln, falls dein Gegner sich zurückzieht!<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1997040/extras/德语-DE标题6.jpg?t=1704254289" /><br>Jede Karte in deinem Deck ist ein einzigartiger Charakter aus dem Marvel-Multiversum. In keinem anderen Spiel kannst du hunderte Designvarianten von Helden und Schurken aus dem gesamten MARVEL-Universum – und darüber hinaus – sammeln, mixen und aufeinander abstimmen. Vielleicht hast du bereits eine von den klassischen Comics inspirierte Iron Man-Karte, aber hast du auch schon die Chibi-, 8-Bit- und Cartoon-Varianten?<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1997040/extras/德语-DE标题7.jpg?t=1704254289" /><br>Ich bin Groot. Ich BIN Groot. Ich bin GROOT. Ich bin Groot? Ich bin Groot. ICH BIN GROOT! Ich bin GROOT! Ich bin Groot?<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1997040/extras/德语-DE标题8.jpg?t=1704254289" /><br>MARVEL SNAP bietet mit regelmäßig neuen Karten, Standorten, kosmetischen Gegenständen, Season Passes, Ranglisten-Saisons, Herausforderungen, Missionen und Events immer etwas Neues und Aufregendes. Du musst nicht monatelang auf Updates warten!<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1997040/extras/德语-DE标题9.jpg?t=1704254289" /><br>Du wirst den Bogen in wenigen Minuten raus haben und jedes Match dauert nur 3 Minuten. Sei dabei und finde heraus, warum MARVEL SNAP mehrere Branchenpreise gewonnen hat!
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

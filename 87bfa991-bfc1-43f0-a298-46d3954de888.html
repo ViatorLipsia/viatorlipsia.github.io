@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Need for Speed Hot Pursuit Remastered</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Need for Speed Hot Pursuit Remastered</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>Nicht gespielt</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-Nie">Nie</a> </TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:13:30</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:17:55</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-Microsoft X Cloud">Microsoft X Cloud</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-06.11.2020">06.11.2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-75">75</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Racing">Racing</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Criterion Games">Criterion Games</a><br/><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Stellar Entertainment">Stellar Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Electronic Arts">Electronic Arts</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1328660" target="_blank">Steam</a><br/><a href="https://www.ea.com/games/need-for-speed/need-for-speed-hot-pursuit-remaster" target="_blank">Official</a><br/><a href="https://www.youtube.com/c/NeedforSpeed" target="_blank">YouTube</a><br/><a href="https://www.facebook.com/needforspeed" target="_blank">Facebook</a><br/><a href="https://twitter.com/needforspeed" target="_blank">Twitter</a><br/><a href="https://www.instagram.com/needforspeed" target="_blank">Instagram</a><br/><a href="https://www.reddit.com/r/needforspeed" target="_blank">Reddit</a><br/><a href="https://nfs.fandom.com/wiki/Need_for_Speed:_Hot_Pursuit_Remastered" target="_blank">Wikia</a><br/><a href="https://en.wikipedia.org/wiki/Need_for_Speed:_Hot_Pursuit_(2010_video_game)" target="_blank">Wikipedia</a><br/><a href="https://www.twitch.tv/directory/game/Need%20for%20Speed%3A%20Hot%20Pursuit%20-%20Remastered" target="_blank">Twitch</a><br/><a href="https://store.epicgames.com/en-US/p/need-for-speed-hot-pursuit-remastered-de0bf5" target="_blank">Epic</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<p>
+Sp&#252;re den Nervenkitzel der Jagd und den Rausch der Flucht in Need for Speed™ Hot Pursuit Remastered auf Xbox One. Genie&#223;e das Gef&#252;hl ungeb&#228;ndigter Geschwindigkeit, w&#228;hrend du als Outlaw oder Cop am Steuer der hei&#223;esten Hochleistungssportwagen der Welt die Polizei &#252;berlistest oder Gesetzesbrecher mit deinem Arsenal taktischer Waffen zur Strecke bringst. Erlebe adrenalingeladenes, von gemeinschaftlichem Wettbewerb gepr&#228;gtes Racing in dieser dank verbesserter Grafik, plattform&#252;bergreifendem Multiplayer – einschlie&#223;lich asynchroner Wettbewerbe durch Autolog – und s&#228;mtlicher zus&#228;tzlicher Haupt-DLCs ultimativen Edition des gefeierten Need for Speed-Deb&#252;ts von Criterion Games. Es wird Zeit, die Verfolgung wieder aufzunehmen.
+</p>
+<p>
+PLATTFORM&#220;BERGREIFENDER MULTIPLAYER UND AUTOLOG – Rase mit Vollgas &#252;ber die kurvenreichen Stra&#223;en von Seacrest County, w&#228;hrend du ein Racing-Erlebnis genie&#223;t, das den gemeinschaftlichen Wettbewerb in den Mittelpunkt stellt. Das bahnbrechende Autolog bringt dich und deine Freunde nicht nur in packenden Verfolgungsjagden und Rennen zusammen, sondern bietet dir abh&#228;ngig von den Aktivit&#228;ten deiner Freunde auch intuitiv Herausforderungen an. Dieses enorm dynamische System baut auf freundschaftlicher Konkurrenz auf und gibt euch jetzt dank plattform&#252;bergreifender Synchronisation und neuem Multiplayer-Gameplay die M&#246;glichkeit, auch dann gegeneinander zu fahren, wenn ihr auf unterschiedlichen Plattformen spielt.
+</p>
+<p>
+S&#196;MTLICHE HAUPT-DLCS UND WEITERE UPDATES – Du erh&#228;ltst direkt bei Release s&#228;mtliche zus&#228;tzlichen Haupt-DLCs, die dir unter anderem sechs weitere Stunden Spielspa&#223; und mehr als 30 Herausforderungen bescheren. Dar&#252;ber hinaus sorgen brandneue Erfolge, Folien und Wagenfarben, weniger Hard-Stops, ein &#252;berarbeiteter Foto-Modus samt Galerie sowie etliche weitere Verbesserungen f&#252;r ein noch ausgefeilteres Spielerlebnis als zuvor. 
+</p>
+<p>
+EXOTISCHE WAGEN MIT WAFFEN – Fahre die begehrtesten Supersportwagen der Welt auf beiden Seiten des Gesetzes. Bring fl&#252;chtige Verd&#228;chtige in getunten Cop-Interceptors mit taktischen Waffen zur Strecke oder sorge als Elite-Racer mit Gegenangriffen und Verteidigungsman&#246;vern f&#252;r Chancengleichheit. Egal, auf welcher Seite du stehst – leg dir eine Strategie zurecht, um dir einen Vorteil gegen&#252;ber der Konkurrenz zu verschaffen!
+</p>
+<p>
+VERFOLGUNG UND FLUCHT – Eine intensive und facettenreiche Einzelspielerkarriere l&#228;sst dich die Action sowohl aufseiten der Cops als auch der Racer erleben, erg&#228;nzt durch ein nahtlos verkn&#252;pftes Multiplayer-Spielerlebnis in allen Rennmodi. Tritt gegen Freunde an oder spiele dich solo durch die Karriere, um Kopfgelder zu verdienen und neue Wagen, Waffen und Ausr&#252;stung freizuschalten.
+</p>
+<p>
+VERBESSERTE GRAFIK – Need for Speed Hot Pursuit Remastered bietet ein zeitloses Racing-Erlebnis mit verbesserter Grafik f&#252;r die heutige Hardware-Generation.
+</p>
+<p>
+ES GELTEN BEDINGUNGEN UND BESCHR&#196;NKUNGEN. WEITERE DETAILS UNTER www.ea.com/de-de/legal.<br />
+&#169; 2020 Electronic Arts Inc. EA, the EA logo, Need for Speed, the &quot;N&quot; icon and the Need for Speed logo are trademarks of Electronic Arts Inc. The names, designs, and logos of all products are the property of their respective owners and used by permission. All other trademarks are the property of their respective owners. 
+</p>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

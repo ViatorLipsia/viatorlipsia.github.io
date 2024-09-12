@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>POSTAL 4: No Regerts</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> POSTAL 4: No Regerts</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>3h 10m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-19.11.2022">19.11.2022</a> 16:22:40</TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:18:36</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:33:57</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Gespielt">Gespielt</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-20.04.2022">20.04.2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-68">68</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-10">10</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Shooter">Shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Running With Scissors">Running With Scissors</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Running With Scissors">Running With Scissors</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://runningwithscissors.com/" target="_blank">Official</a><br/><a href="https://twitter.com/RWSbleeter" target="_blank">Twitter</a><br/><a href="https://store.steampowered.com/app/707030/POSTAL_4_No_Regerts/" target="_blank">Steam</a><br/><a href="https://en.wikipedia.org/wiki/Postal_4:_No_Regerts" target="_blank">Wikipedia</a><br/><a href="https://www.facebook.com/POSTAL.World" target="_blank">Facebook</a><br/><a href="https://www.instagram.com/gopostalrws" target="_blank">Instagram</a><br/><a href="https://www.youtube.com/user/GoPostalRWS" target="_blank">YouTube</a><br/><a href="https://www.gog.com/game/postal_4_no_regerts" target="_blank">GOG</a><br/><a href="https://www.twitch.tv/directory/game/Postal%204%3A%20No%20Regerts" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					Der POSTAL Dude ist zurück!<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/707030/extras/P4_GIF_RattlerGrapplingHook.gif?t=1724871817" /><br><br>Mehrere Jahre sind seit den Ereignissen vergangen, die die einst stolze Stadt Paradise verwüstet haben. Die beiden Einzigen, die die Katastrophe unbeschadet überstanden haben, sind der glücklose Jedermann, der auch als POSTAL Dude bekannt ist und sein treuer Begleiter Champ. Sie fahren ziellos durch die sengende Wüsten Arizonas auf der Suche nach einem neuen Ort, den sie ihr Zuhause nennen können. Nachdem bei einem zufälligen Tankstellenstopp ihr Auto, ihr Wohnwagen und der Rest ihres weltlichen Besitzes gestohlen wurden, hat der Dude scheinbar nur noch seinen Hund und seinen Bademantel und beides riecht nicht besonders gut. Doch am Horizont erblickt das Duo eine unbekannte, schillernde Stadt, die ihnen zuwinkt. Welche ungeahnten Aussichten liegen darin? Ruhm? Reichtum? Vielleicht ein Bidet oder zwei? Edensin erwartet sie.<br><br>&quot;POSTAL 4: No Regerts&quot; ist ein satirischer und unverschämt komödiantischer Open-World-Ego-Shooter und die lang erwartete und vor allen echte Fortsetzung von POSTAL 2, das liebevoll als &quot;Schlechtestes Spiel aller Zeiten&quot; bezeichnet wurde. (Ob ein dritter Teil existiert ist leider nicht bekannt.<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/707030/extras/P4_GIF_RevolverDudeEye.gif?t=1724871817" /><h2 class="bb_tag">Hauptmerkmale</h2><ul class="bb_ul"><li>Freies, weltoffenes Sandbox-Gameplay: Von Montag bis Freitag erledigst du deine täglichen Aufgaben auf nicht-linearer Weise, sei es das Schmuggeln von Migranten über die Grenze, das Ausrichten von Rennen in der örtlichen Sportarena, das Ausprobieren der virtuellen Realität oder einfach nur der Versuch, die nächste Unterschrift für deine altmodische Petition zu finden! Suche auch nach den optionalen Nebenquests für zahlreiche Belohnungen! Oder ignoriere alles und sorge einfach nur nach Lust und Laune für Chaos und Zerstörung!<br></li><li>Wähle die Stimme vom Dude! Jon St. John, Branchenveteran und legendäre Stimme von Duke Nukem, gibt sein Debüt in der Rolle des POSTAL Dude! Außerdem kehren die klassischen Fan-Lieblinge Rick Hunter (P1 &amp; P2) und Corey Cruise (das komische andere POSTAL Spiel) als alternative Dude-Stimmen zurück, so dass du mehr POSTAL Dude denn je zur Verfügung hast!<br></li><li>Es gibt eine brandneue Stadt zu erkunden! Entdecke Edensin und lüfte die dunklen Geheimnisse dieser Glücksspielstadt! Besuche das örtliche Gefängnis, aber werde nicht zu einem Dauergast! Triff die mysteriösen und exotischen Einheimischen an der mexikanischen Grenze! Halte die Hunde in der westlichen Geisterstadt auf Trab! Fahre stilvoll mit deinem eigenen, schicken Behinderten-Roller durch die Straßen! Schütze Deine Haut und alle Körperöffnungen vor den Bergbewohnern in der geheimnisvollen Dark Lodge! Versuche Dein Glück in den Casinos auf der Zag, alles unter dem wachsamen Auge des monolithischen ERC-Turmes!<br></li><li>Pazifist vs. Aggresiv: Genieße die volle Freiheit bei der Wahl deines Spielstils! Neue Munitionstypen und andere Werkzeuge, die friedliche (oder zumindest nicht-tödliche) Konfrontationen unterstützen, aber eben auch Gewalt ist immer eine Option.<br></li><li>Neue Freunde und Feinde: Lerne Kunny kennen, die bessere Hälfte (je nachdem, worauf du stehst) von Krotchy! Fühle die Beats und vielleicht auch ein paar andere, hüpfende Teile von DJ Carter Cruise! Und entrolle das riesige Klopapierimperium des geflüchteten P, Tinklage!<br></li><li>Ein überragendes Arsenal! Die Klassiker der Serie kehren zurück, wie die kultige Schaufel, der Benzinkanister und die berühmte Bumeran-Machete! Setze neue Waffen ein, wie die AK, die vierfache Schrotflinte und fange mit dem mächtigen M60 das erste Blutvergießen an! Stelle Fallen auf und entfessel das gefiederte Chaos mit der neuen Tauben-Mine! Werde kreativ mit der einzigartigen Flüssigmunition &quot;Spurt´n´Squirt&quot;  Fülle sie mit Wasser, um Brände zu löschen, mit Benzin, um einen improvisierten Flammenwerfer zu bauen, oder mit Urin um die Bewohner von Edensin zu bespritzen. <br></li><li>Starke Power-Ups: Mit Power-Ups wie dem klassischen Katzen-Schalldämpfer, der Katzenminze welches Dich alles in Zeitlupe erleben lässt und dem Energy-Drink mit den zwei Flügeln kannst Du deinen Waffen den bekannte Postal-Touch verleihen! Lade deine Fäuste,deinen mächtigen Fuß und deine Harnröhre mit einer Dosis des Hoden-schrumpfendem Vitamin X auf!<br></li><li>Einzigartige Waffenkombinationen und Fähigkeiten: Kombiniere eine Katze mit einer Granate oder dem Raketenwerfer, um eine explosive Muschi zu zünden! Mische ein wenig Katzenminze mit Deinem Jagdgewehr, um jeder Kugel eine gewisse Kurventauglichkeit zu verpassen. Du fühlst dich niedergeschlagen? Benutze den Rattler um dich in neue Höhen zu katapultieren!<br></li><li>Dude-Anpassungen: Zieh den klassischen POSTAL 2-Mantel an, um ein nostalgisches Gefühl zu bekommen! Verschönere Deine Waffen mit verschiedenen Skins! Und weitere kosmetische Optionen werden folgen!<br>Jede Menge Interaktivität: Füttere Streuner mit Leckerlis, um größere Gruppen von Hunden anzulocken, damit diese dann Deine Drecksarbeit erledigen! Greife nach Objekten und trage sie herum, denn wenn du sie zum Beispiel stapelst, kannst du neue Bereiche entdecken.  Oder du wirfst sie einfach um dein Gegenüber zu ärgern. Fülle Dein Inventar (gegen Bezahlung) an Automaten in der Stadt wieder auf! Zum ersten Mal in dem Franchise kannst Du funktionierende Toiletten benutzen und spülen!</li></ul><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/707030/extras/P4_GIF_MexicoScooter.gif?t=1724871817" />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

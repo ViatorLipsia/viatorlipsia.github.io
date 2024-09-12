@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Path of Exile</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Path of Exile</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>15h 20m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-11.07.2024">11.07.2024</a> 18:00:56</TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:18:35</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:25:50</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Gespielt">Gespielt</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-23.10.2013">23.10.2013</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Hack and slash/Beat 'em up">Hack and slash/Beat 'em up</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Grinding Gear Games">Grinding Gear Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Grinding Gear Games">Grinding Gear Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Massively Multiplayer Online (MMO)">Massively Multiplayer Online (MMO)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://www.pathofexile.com" target="_blank">Official</a><br/><a href="https://store.steampowered.com/app/238960" target="_blank">Steam</a><br/><a href="https://en.wikipedia.org/wiki/Path_of_Exile" target="_blank">Wikipedia</a><br/><a href="https://www.facebook.com/pathofexile" target="_blank">Facebook</a><br/><a href="https://twitter.com/pathofexile" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/channel/UCA7X5unt1JrIiVReQDUbl_A" target="_blank">YouTube</a><br/><a href="https://www.reddit.com/r/pathofexile" target="_blank">Reddit</a><br/><a href="https://discordapp.com/invite/zC6s5nT" target="_blank">Discord</a><br/><a href="https://www.epicgames.com/store/en-US/p/path-of-exile" target="_blank">Epic</a><br/><a href="https://www.twitch.tv/directory/game/Path%20of%20Exile" target="_blank">Twitch</a><br/><a href="https://www.instagram.com/playpathofexile" target="_blank">Instagram</a><br/><a href="https://www.poewiki.net/wiki/Path_of_Exile_Wiki" target="_blank">Wikia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					Du bist ein Verbannter, der auf dem dunklen Kontinent Wraeclast ums Überleben kämpft, während du versuchst, Macht zu erlangen, die es dir erlaubt, dich an denen zu rächen, die dir Unrecht getan haben. Path of Exile wurde von Hardcore-Gamern entwickelt und ist ein Online-Action-RPG, das in einer dunklen Fantasy-Welt angesiedelt ist. Das Spiel konzentriert sich auf actiongeladene Kämpfe, mächtige Gegenstände und tiefgreifende Charakteranpassung, ist komplett kostenlos und wird niemals kostenpflichtig sein.<h2 class="bb_tag">Besonderheiten</h2><ul class="bb_ul"><li><strong>Freiheit. Macht. Rache.</strong><br>Path of Exile ist ein Online-Action-Rollenspiel, das auf einer starken Online-Gegenstandsökonomie und einer umfassenden Charakteranpassung basiert.<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/238960/extras/Gameplay2.gif?t=1721339035" /><br><br>Path of Exile spielt in der düsteren Fantasy-Welt von Wraeclast. Gezeichnet von rätselhaften Katastrophen der Vergangenheit und bewohnt von Kreaturen des Alptraums, fordert die Umgebung die Verbannten heraus, die es wagen, sie zu erkunden. Du übernimmst die Rolle eines Duellanten, Hexe, Waldläuferin, Templer, Marodeur, Schatten oder Adelstochter. Erforsche Wraeclast von den verlassenen Küsten bis hin zur Stadt Oriath und entdecke die uralten Geheimnisse, die dich erwarten.<br><br></li><li><strong>Grenzenlose Charakterausbaumöglichkeiten</strong><br>Erstelle und individualisiere Hunderte von einzigartigen Fertigkeitskombinationen mit handelbaren Gemmen und unserem gigantischen passiven Fertigkeitenbaum. Kombiniere Fertigkeiten-, Unterstützungs- und Auslösergemmen, um für deinen Charakter die perfekte Balance zwischen Offensive und Defensive zu finden.<br><br>Alle Charakterklassen von Path of Exile teilen sich den riesigen passiven Fertigkeitenbaum. Beginnend an einem der sieben verschiedenen Orte, die von der gewählten Klasse diktiert werden, können sich die Spieler auf die Kernspezialitäten ihrer Klasse konzentrieren oder durch den Baum reisen, um komplexe Kombinationen von Fertigkeiten aus verschiedenen Disziplinen aufzubauen. Über den Baum verstreut befinden sich Schlüsselfertigkeiten, Meisterschaften und Juwelenfasssungen, die die Spielweise eines Charakters drastisch verändern.<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/238960/extras/PassiveTree2.gif?t=1721339035" /><br><br></li><li><strong>Bis an die Zähne bewaffnet</strong><br>Path of Exile ist komplett auf Gegenstände ausgelegt. Unsere Fläschchen sind persistente Gegenstände, die Modifikatoren haben. Unsere Endgame-Gebiete können als Karten-Gegenstände gefunden werden, die Modifikatoren haben, wodurch ihre Herausforderungen und Belohnungen veränderbar sind. Wir sind sogar so weit gegangen, dass wir Gold als Währung abgeschafft haben und unser Wirtschaftssystem auf Sphären basiert, die zufällig die Eigenschaften anderer Gegenstände verändern können. Wir haben unser Gegenstandssystem sorgfältig für Veteranen der besten Action-RPGs entwickelt.<br><br></li><li><strong>Erkunde den Atlas der Welten</strong><br>Zum Atlas der Welten gehört eine Reihe von mehr als hundert hochstufigen Karten, die die Grenzen deines Builds auf die Probe stellen. Während du den Atlas erforschst, wirst du schließlich seine dunklen Geheimnisse lüften und dich den gefährlichsten Bossen stellen, die Wraeclast je gesehen hat.<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/238960/extras/MavenGif23.gif?t=1721339035" /><br><br>Wie es sich für Path of Exile gehört, hat der Atlas der Welten seinen eigenen Fertigkeitenbaum. Verdiene Fertigkeitspunkte für den Baum, indem du Karten auf dem Atlas abschließt und dein eigenes einzigartiges Endgame-Erlebnis kreierst.<br><br></li><li><strong>Tödliche  Missionen</strong><br>Auf deiner Reise durch Wraeclast triffst du auf andere Verbannte, die dich um Hilfe bitten. Fange wilde Bestien für Einhar, tauche mit Niko in die Tiefen der Azurit-Mine ein, erforsche mit Alva die Geheimnisse des Tempels von Atzoatl oder untersuche mit Jun das Unsterbliche Syndikat. Einmal erhalten, können diese Missionen jederzeit im Endgame abgeschlossen werden. Diese optionalen Inhalte in Path of Exile belohnen euch mit wertvoller Währung, mächtigen handelbaren Gegenständen und neuen Möglichkeiten zum Anfertigen von Gegenständen.<br><br></li><li><strong>Richte dein Versteck gemütlich ein</strong><br>Auf deinen ausgiebigen Reisen durch die Akte und den Atlas der Welten entdeckst du geheime Orte, an denen es von gefährlichen Monstern wimmelt. Besiege sie, erobere das Versteck für dich und errichte deine eigene, persönliche Stadt. Nutze dein Versteck als ruhigen Ort, um mit anderen Verbannten Handel zu betreiben, nach dem Kampf Gegenstände anzufertigen oder es auszubauen und als persönliche Gildenhalle mit Hunderten von Dekorationen zu nutzen.<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/238960/extras/Hideout.gif?t=1721339035" /><br><br></li><li><strong>Sei Erbarmungslos</strong><br>Erbarmungslos ist ein optionaler Spielmodus, der eine noch anspruchsvollere Art bietet, Path of Exile zu spielen. Spieler im Modus Erbarmungslos können sich auf eine extreme Gegenstandsknappheit, begrenzte Anfertigungsmöglichkeiten und viele andere Änderungen, wie z. B., dass Gemmen nur noch erbeutet werden können, einstellen. Erbarmungslos ist ein Modus der für Reibung, Spannung und Vorfreude sorgt. Er ist viel schwieriger, aber die Überwindung dieser Schwierigkeit fühlt sich sehr lohnend an. In einer Welt, in der Gegenstände weit unter ihrem Wert liegen, hat jeder fallen gelassene Gegenstand das Potenzial, der Durchbruch zu sein, den man braucht.<br><br></li><li><strong>Immer Play-to-win. Niemals Pay-to-win.</strong><br>Wir streben danach, ein faires Spielerlebnis für alle Spieler zu schaffen. Du kannst dir in Path of Exile mit Echtgeld keinen Spielvorteil erkaufen.</li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

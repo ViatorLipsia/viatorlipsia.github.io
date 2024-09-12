@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Dungeons 4</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Dungeons 4</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>Nicht gespielt</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-Nie">Nie</a> </TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:13:30</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:15:12</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-Microsoft X Cloud">Microsoft X Cloud</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-09.11.2023">09.11.2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Real Time Strategy (RTS)">Real Time Strategy (RTS)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Simulator">Simulator</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Realmforge Studios">Realmforge Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Kalypso Media">Kalypso Media</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1643310" target="_blank">Steam</a><br/><a href="https://www.twitch.tv/directory/game/Dungeons%204" target="_blank">Twitch</a><br/><a href="https://store.epicgames.com/en-US/p/dungeons-4-595454" target="_blank">Epic</a><br/><a href="https://www.youtube.com/c/KalypsoMediaGroup/" target="_blank">YouTube</a><br/><a href="https://discord.gg/kalypsomedia" target="_blank">Discord</a><br/><a href="https://www.instagram.com/kalypso_media/" target="_blank">Instagram</a><br/><a href="https://www.facebook.com/KalypsoMedia/" target="_blank">Facebook</a><br/><a href="https://www.twitter.com/kalypsomedia" target="_blank">Twitter</a><br/><a href="https://www.kalypsomedia.com/us/dungeons-4" target="_blank">Official</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<p>
+Das Absolute B&#246;se und seine vertrauensw&#252;rdigste *hust* Dienerin Thalya kehren nach den Ereignissen des famosen Vorg&#228;ngers in Dungeons 4 zur&#252;ck, um erneut &#252;ber die M&#228;chte des Guten zu triumphieren.
+</p>
+<p>
+Erbaue einen behaglichen und bequemen Dungeon, der die Bed&#252;rfnisse deiner Kreaturen erf&#252;llt, um &#252;ber sie zu herrschen, sie an die Oberwelt zu schicken und die guten Einwohner der Oberwelt daran zu erinnern, dass das Absolute B&#246;se ihre L&#228;nder regiert. Sammele deine B&#246;sartigkeit auf neue und dynamische Weise und entfessele sie auf den saftigen Wiesen und in den lauschigen W&#228;ldern der Oberwelt, um sie der dunklen Seite einzuverleiben. Doch achte stets darauf, dass dein Dungeon mit perfiden Fallen gut gesichert ist und deine Kreaturen ihn gut verteidigen, denn die undankbaren Oberweltler werden nicht einfach nur dasitzen und D&#228;umchen drehen, w&#228;hrend du ihr Land in das ultimative Urlaubsparadies des Ferien Machenden B&#246;sen verwandelst.
+</p>
+<p>
+Doch was war das f&#252;r ein L&#228;rm? „Gold, Gold, Gold und Edelsteine, Gold und E-hedelsteine und noch viel mehr Gold!“ Das uralte Lied hallt durch die Unterwelt, begleitet vom dr&#246;hnenden Klang von H&#228;mmern und &#196;xten. Die Zwerge sind gekommen, um ihren Anspruch geltend zu machen – und sie teilen die opulenten Rohstoffe der Unterwelt nur sehr ungern. Gemeinsam mit den Elfen und Menschen der Oberwelt schicken sie aufdringliche &#220;berfallkommandos, um das Herz des Dungeons zu finden.<br />
+Dungeons 4 bewahrt den Charme des Vorg&#228;ngers, aber alles ist jetzt gr&#246;&#223;er, besser und bietet noch mehr und dynamischere B&#246;sartigkeit™.
+</p>
+<p>
+Features:<br />
+• Mit Zwergen ist alles besser™: Die Zwerge sind gekommen, um ihre Festungen in der Unterwelt zu errichten. Die z&#228;hen kleinen Kerle (sag ihnen das besser nicht ins Gesicht) wetteifern dabei mit dem Stetig Expandierenden B&#246;sen um Platz und Ressourcen.
+</p>
+<p>
+• Macht den Dungeon wieder gro&#223;artig: Die Dungeons sind bis zu vier Mal gr&#246;&#223;er als fr&#252;her und noch mehr Kreaturen stehen bereit, die Befehle des Alles Beherrschenden B&#246;sen auszuf&#252;hren und die Oberwelt zu erobern. Die Zeit ist reif f&#252;r gewaltige Armeen und wahrhaft weitl&#228;ufige Dungeons!
+</p>
+<p>
+• Zum Greifen nah: Die Oberwelt ist gr&#246;&#223;er als je zuvor. Sammele B&#246;sartigkeit, indem du Mini-Bosse wie das zwanghaft harmonische Einhorn besiegst und nutze sie, um die Oberwelt in atemberaubende Biome des reinen B&#246;sen zu verwandeln.
+</p>
+<p>
+• Neu und gl&#228;nzend: Ein f&#228;higkeitsbasiertes System von Vorteilen f&#252;r Thalya, die vertrauensw&#252;rdigste *hust* und loyalste Untergebene des Absoluten B&#246;sen, gew&#228;hrt ihr beeindruckende neue Kr&#228;fte. Und mit der anpassbaren Hand des B&#246;sen hat das Modebewusste B&#246;se jetzt noch mehr Spa&#223; dabei, die Weltherrschaft zu &#252;bernehmen, &#252;ber seine Kreaturen zu herrschen und Untergebene zu ohrfeigen.
+</p>
+<p>
+• Die Unterwelt steckt voller Handlanger: Die Horde, die Untoten und die D&#228;monen brennen darauf, die W&#252;nsche des Absoluten B&#246;sen zu erf&#252;llen. Noch mehr Kreaturen als je zuvor warten auf die Befehle des Gestikulierenden B&#246;sen und die Schnodderlinge spielen dieses Mal eine sehr viel wichtigere Rolle.
+</p>
+<p>
+• Spannende M&#228;rchenstunde: Der Erz&#228;hler f&#252;hrt mit dem bekannten Dungeons-Humor durch eine lange Kampagne sowie mehrere Skirmishkarten, die deine Herrschaft als das Absolut B&#246;se vor neue Herausforderungen stellen.
+</p>
+<p>
+• Gibt der Welt einen neuen Anstrich: Verbreite deine B&#246;sartigkeit &#252;ber die Oberwelt, verleibe ihre saftig-gr&#252;nen Umgebungen der dunklen Seite ein und genie&#223;e das noch kr&#228;ftigere und strahlend-sch&#246;ne B&#246;se, w&#228;hrend deine B&#246;sartigkeit die vielen neuen Biome umgestaltet.
+</p>
+<p>
+• Gemeinsam durch dick und d&#252;nn: Im kooperativen Multiplayer k&#246;nnen zwei Spieler gemeinsam einen Dungeon verwalten. Die Kampagne sowie alle Skirmishkarten k&#246;nnen kooperativ gespielt werden.
+</p>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Football Manager 2021</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Football Manager 2021</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>10d 4h 20m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-21.12.2021">21.12.2021</a> 1:33:21</TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:18:36</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:39:24</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Gespielt">Gespielt</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-23.11.2020">23.11.2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-88">88</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Simulator">Simulator</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Sport">Sport</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Sports Interactive">Sports Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-SEGA">SEGA</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1263850" target="_blank">Steam</a><br/><a href="https://www.epicgames.com/store/product/football-manager-2021" target="_blank">Epic</a><br/><a href="http://www.footballmanager.com/" target="_blank">Official</a><br/><a href="https://www.twitch.tv/directory/game/Football%20Manager%202021" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					Der Manager ist das Herz jedes Fußballvereins. In <strong>Football Manager 2021</strong> stehen Sie als Manager daher so stark im Fokus wie noch nie – dank eines dynamischen, lebensechten Managementerlebnisses und noch größerer Detailtiefe. Sie haben alles, was Sie brauchen, um sich in die Elite vorzuarbeiten.<br><br>Es stehen 2.500 Vereine aus über 50 Nationen und allen Ebenen der Fußballpyramide zur Auswahl – die Möglichkeiten sind endlos. Es liegt an dir, Chef.<br><br><ul class="bb_ul"><li>Wählen Sie Ihre Farben und eine Herausforderung, die zu Ihren Ambitionen passt, und arbeiten Sie an der Vereinshierarchie, damit auch dieser seine Ziele erreicht ... oder tragen Sie die Konsequenzen.<br></li><li>Arbeiten Sie mit Ihrem Mitarbeiterstab zusammen, um die Stärken und Talente Ihrer Mannschaft zu beurteilen, bevor Sie sich auf dem Transfermarkt umsehen. Es gibt sicher einen Jungstar in der Akademie, der bald in die erste Mannschaft aufsteigen könnte ...<br></li><li>Erarbeiten Sie Strategien, Formationen und Spielstile für jede Situation, um die Gewinnchancen Ihres Vereins zu erhöhen und die drei Punkte zu holen.<br></li><li>Erleben Sie das Spektakel des Spieltags und genießen Sie das unvergleichliche Gefühl, wie sich Ihre aufwändige Planung auf dem Platz bezahlt macht.</li></ul><h2 class="bb_tag"><strong>Interaktion</strong></h2><br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1263850/extras/Interaction-STEAM.gif?t=1671725363" /><br><br>Die Kommunikation mit deinen Spielern und den Medien war nie zielgerichteter oder realistischer. Gesten ermöglichen es dir, jede Emotion auszudrücken, und das &quot;Kurzer Austausch&quot;-Feature verbessert die kurzen, informellen Unterhaltungen, die zum Alltag aller Manager gehören. In FM21 spüren die anderen die Wirkung deiner Worte und wissen, was für ein Manager du bist.<h2 class="bb_tag"><strong>Spieltag</strong></h2><br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1263850/extras/Matchday-STEAM.gif?t=1671725363" /><br><br>Jedes einzelne Punktspiel fühlt sich mit unserer Match Engine an wie ein echtes Spektakel, und sieht auch so aus. Du erhältst vor dem Spiel bessere Analysen und Ratschläge. In Kombination mit unserer überarbeiteten Match-Benutzeroberfläche sorgen diese verbesserten Daten dafür, dass du noch näher am Geschehen bist als je zuvor.<br> <br>FM21 bietet außerdem unzählige KI-Verbesserungen in allen Bereichen. Die Rate bei der Entscheidungsfindung hat sich erhöht und es gibt mehr Abstufungen bei den Entscheidungen von Spielern. Dadurch reagieren sie besser und treffen schnellere Entscheidungen. Diese optimierte Entscheidungsfindung führt zu besserer defensiver und Torhüter-Intelligenz, erweitert das Spiel im Mittelfeld und ermöglicht mehr Vielfalt im Angriffsdrittel.<br><br>Außerdem erhältst du nach dem Abpfiff mehr Reaktionen und Daten. Dazu gehört auch unser brandneues xG-System, das dir genau sagt, wie gut beziehungsweise schlecht die Leistung deines Teams in Relation zu den erspielten Chancen war.<h2 class="bb_tag"><strong>Analysen und Statistiken</strong></h2><br>Unsere weitreichenden Daten-Verbesserungen greifen auch jenseits der Spieltage. Sie geben dir alle Werkzeuge zum Erweitern deiner Spielvorbereitungen an die Hand. Manager profitieren dieses Jahr von einer erhöhten Anzahl an Datenberichten und Darstellungen. Dazu gehören monatliche Berichte des neuen Leistungsanalysten, der die Daten echter Manager widerspiegelt. Neue Diagramme und Datenkarten ermöglichen klarere Einsichten in die Stärken des Teams und die Schwächen der Gegner. Eine Fülle an neuen Statistiken bietet dir außerdem eine komplette Übersicht über das ganze Spielfeld.<h2 class="bb_tag"><strong>Rekrutierung</strong></h2><br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1263850/extras/Recruitment-STEAM.gif?t=1671725363" /><br><br>Neue Mitarbeiterrollen, Meetings und Interaktionen sorgen dafür, dass einer der beliebtesten Bereiche des Spiels sich frischer anfühlt. Durch die neuen Rekrutierungsmeetings wird sichergestellt, dass du und deine Scoutingabteilung eine einheitliche Linie verfolgen – in Bezug auf die nächsten Personalentscheidungen ebenso wie auf die langfristige Transferstrategie des Clubs. Außerdem kannst du jetzt Agenten direkt ansprechen, um auszuloten, ob ein Spieler Interesse an einem Wechsel zu deinem Verein hätte.<h2 class="bb_tag"><strong>Saisonende</strong></h2><br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1263850/extras/End-of-Season-STEAM.gif?t=1671725363" /><br><br>Lass die Saison auf noch nie da gewesene Weise noch einmal Revue passieren und erinnere dich an deine Erfolge. Der neue Saisonrückblick wählt deine besten Momente auf dem Platz und daneben. Und besonders wichtige Siege fühlen sich noch schöner an, denn die Präsentation der Titel wurde verbessert und du genießt jede Menge Medienaufmerksamkeit.<br> <br>In diesem Spiel werden Planung und Fachwissen belohnt – aber es gibt kein vorher festgelegtes Ende oder Skript, sondern nur endlose Möglichkeiten. Jeder Verein hat eine Geschichte zu erzählen – und es liegt an dir, diese Geschichte zu schreiben.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

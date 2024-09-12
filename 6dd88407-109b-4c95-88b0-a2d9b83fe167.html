@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Girlfriend Rescue</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Girlfriend Rescue</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>5h 57m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-13.06.2023">13.06.2023</a> 6:06:42</TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:18:36</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:28:04</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Gespielt">Gespielt</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-10.07.2015">10.07.2015</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-50">50</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Hack and slash/Beat 'em up">Hack and slash/Beat 'em up</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Aldorlea Games">Aldorlea Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Aldorlea Games">Aldorlea Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://www.aldorlea.org/girlfriendrescue.php" target="_blank">Official</a><br/><a href="https://store.steampowered.com/app/332400" target="_blank">Steam</a><br/><a href="https://www.twitch.tv/directory/game/Girlfriend%20Rescue" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<a href="https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fdiscord.gg%2FpSVd3fAxgM" target="_blank" rel=" noopener"  ><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/332400/extras/discordALDO616B.png?t=1634805280" /></a><h2 class="bb_tag">Description</h2><br>Girlfriend Rescue is a thrilling adventure by <a href="https://steamcommunity.com/linkfilter/?u=http%3A%2F%2Fwww.aldorlea.org" target="_blank" rel=" noopener"  >Aldorlea Games</a>, where the gameplay of &quot;Dragon Quest&quot; meets the atmosphere of &quot;Streets of Rage&quot;.<br>Innovative, mixing rogue-style RPG and Beat 'em Up atmosphere in a unique way, this game features a great deal of strategy through a mix of character selection and creative skills.<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/332400/extras/promo-girlfriend-rescue.png?t=1634805280" /><h2 class="bb_tag">Plot</h2><br>You have very little time to find where your girlfriend has been taken, and to defeat whoever did it.<br>It seems a tough and big task. But you want her.. death or success, what will it be? <br>Maybe YOU can decide on the outcome!<h2 class="bb_tag">Features</h2><br><ul class="bb_ul"><li>Enthralling Adventure Set in a Modern World<br></li><li> 50+ Achievements to Unlock<br></li><li>Stunning Artworks from the Team Behind Moonchild, The Book of Legends and Undefeated<br></li><li>Rename all your characters to yourself, your friends, your family - whoever you want, really<br></li><li>14 Bonus Items to Obtain Upon Completing Each World<br></li><li>Innovative and Strategic Battles<br></li><li>Original and Inventive Spells Unique to Each Character<br></li><li>Incredible Set of Items, Weapons and Equipment<br></li><li>Tons of Status Ailments to Enhance the Strategic Aspect<br></li><li>6 Modes of Difficulty (including Rogue, Maniac &amp; Legendary, but also Easy)<br></li><li>Visible Encounters, Auto-Save &amp; Optional Mouse Control<br></li><li>Great Replay Value with Tons of Possible Parties<br></li><li>Cast of 9 Characters to Choose from, Not Including 4 Unlockable &quot;Secret&quot; Ones</li></ul><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/332400/extras/try-.png?t=1634805280" /><br><br><ul class="bb_ul"><li><strong>Martin the Cool Kid</strong> - for sure the fastest of the bunch, and has some wicked moves up in his sleeves, too<br></li><li><strong>Lester the Cop</strong> - that dude will love to apply the law and command you guys, but he can pack a punch, too<br><br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/332400/extras/chara08.png?t=1634805280" /><br></li><li><strong>Joy the Bombshell</strong> - a girl who loves to make sure others are alright, especially if they are young handsome males<br><br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/332400/extras/chara14.png?t=1634805280" /><br></li><li><strong>Katia the Nerd</strong> - you wouldn't believe how many crazy, flat-out weird skills that girl has<br></li><li><strong>Cookie the Bullfrog</strong> - that small(ish) dude has some many venoms and poisons you have to wonder if they didn't get it from Australia or the deep woods of the Amazon</li></ul><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/332400/extras/cook.png?t=1634805280" /><br><br>And more!...<h2 class="bb_tag">Hints and Recommendations</h2><br><ul class="bb_ul"><li>Pick Easy for a first play-through - you can attempt more difficult modes later on<br></li><li>Search everywhere - this is a game that rewards exploration<br></li><li>Try to kill all the enemies - your girlfriend (and the exp. points ^^) are worth it<br></li><li>Keep your party members healthy - don't let them starve or with a bad cold<br></li><li>Use stat-increasing items immediately - no need to store them for later<br></li><li>Plan out your strategies - check what kind of skills each member has</li></ul><h2 class="bb_tag">Best-selling Games by Aldorlea Available on Steam</h2><br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/332400/extras/3-promo.png?t=1634805280" /><br><br><ul class="bb_ul"><li><a href="http://store.steampowered.com/app/280140/" target="_blank" rel=""  >Millennium - A New Hope</a><br></li><li><a href="http://store.steampowered.com/app/332410/" target="_blank" rel=""  >Moonchild</a><br></li><li><a href="http://store.steampowered.com/app/332380/" target="_blank" rel=""  >Asguaard</a><br></li><li><a href="http://store.steampowered.com/app/332390/" target="_blank" rel=""  >Undefeated</a><br></li><li><a href="http://store.steampowered.com/app/337980/" target="_blank" rel=""  >Vagrant Hearts</a><br></li><li><a href="http://store.steampowered.com/app/368250/" target="_blank" rel=""  >Valiant</a></li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

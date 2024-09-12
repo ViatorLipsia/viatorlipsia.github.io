@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ori and the Will of the Wisps</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Ori and the Will of the Wisps</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>Nicht gespielt</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-Nie">Nie</a> </TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:13:31</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:18:15</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-Microsoft X Cloud">Microsoft X Cloud</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-10.03.2020">10.03.2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-87">87</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-91">91</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Platform">Platform</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Moon Studios">Moon Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-iam8bit">iam8bit</a><br/><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Xbox Game Studios">Xbox Game Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://twitter.com/OriTheGame" target="_blank">Twitter</a><br/><a href="https://en.wikipedia.org/wiki/Ori_and_the_Will_of_the_Wisps" target="_blank">Wikipedia</a><br/><a href="https://store.steampowered.com/app/1057090" target="_blank">Steam</a><br/><a href="https://www.orithegame.com/" target="_blank">Official</a><br/><a href="https://oriandtheblindforest.fandom.com/wiki/" target="_blank">Wikia</a><br/><a href="https://www.facebook.com/OriTheGame" target="_blank">Facebook</a><br/><a href="https://www.youtube.com/user/MoonGameStudios" target="_blank">YouTube</a><br/><a href="https://www.reddit.com/r/OriAndTheBlindForest" target="_blank">Reddit</a><br/><a href="https://www.twitch.tv/directory/game/Ori%20and%20the%20Will%20of%20the%20Wisps" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<p>
+L&#252;fte das Geheimnis um Oris wahre Bestimmung.<br />
+Brich zu einem Abenteuer in einer weitl&#228;ufigen und exotischen Welt auf, in der du auf riesige Feinde und fordernde R&#228;tsel treffen wirst, in dieser vollst&#228;ndig f&#252;r Xbox Series X und Xbox Series S optimierten, hei&#223; erwarteten Fortsetzung von Oris Reise.
+</p>
+<p>
+Der kleine Waldgeist Ori hat schon viele Gefahren gemeistert. Doch als ein schicksalhafter Flug die kleine Eule Ku in Bedr&#228;ngnis bringt, bedarf es mehr als nur Mut, um eine Familie wieder zu vereinen, ein geschundenes Land zu heilen und Oris wahre Bestimmung zu erfahren. Von den Machern des preisgekr&#246;nten Action-Jump-’n’-Runs Ori and the Blind Forest stammt dieses neue Abenteuer in einer wundersch&#246;nen Welt voller Freunde und Widersacher, die in der liebevoll handgezeichneten Spielwelt zum Leben erwachen. Untermalt mit einem orchestralen Soundtrack f&#252;hrt Moon Studios in Ori and the Will of the Wisps die Tradition von Moon Studios fort und verbindet knackige Jump-’n’-Run-Action mit einer ergreifend in Szene gesetzten Geschichte.
+</p>
+<p>
+Verliere dich in der detailreichen Geschichte<br />
+•	&#220;berw&#228;ltigende Kulissen – Erforsche eine riesige, exotische und atemberaubende Welt in 4K und HRD auf Xbox Series X, Xbox One X und Windows 10.<br />
+•	Packende Story – L&#252;fte in dieser detailreichen, abenteuerlichen Geschichte das Geheimnis um Oris wahre Bestimmung, unterlegt mit einem fantastischen Soundtrack.
+</p>
+<p>
+Meistere einzigartige F&#228;higkeiten.<br />
+•	Waffen und Angriffe – F&#252;hre Geistwaffen, Zauberspr&#252;che und F&#228;higkeiten ins Feld, die dynamische Kampfmechaniken in der Welt von Ori er&#246;ffnen.<br />
+•	Splittersystem – Verbessere Oris F&#228;higkeiten und passe sie deinem Spielstil an.
+</p>
+<p>
+Stelle dich epischen Gegnern und herausfordernden R&#228;tseln.<br />
+•	&#220;berlebensgro&#223;e Bosse – Stelle dich bis in den Himmel ragenden Gegnern entgegen und meistere nervenaufreibende Fluchtszenen.<br />
+•	Lebendige Charaktere – Die unterschiedlichsten Charaktere werden Ori helfen, das Geheimnis um seine wahre Bestimmung zu l&#252;ften.
+</p>
+<p>
+Entdecke aufregende Spielmodi.<br />
+•	Geisterpr&#252;fungen – Steige in der Bestenlisten auf, indem du im Spiel einzigartige Speedrun-Herausforderungen bestehst.<br />
+•	Geisterschreine – Stelle dich zusehends schwerer werdenden Wellen von Gegnern in Pr&#252;fungen auf Zeit, um Belohnungen zu erhalten.
+</p>
+<p>
+Optimiert f&#252;r Xbox Series X.<br />
+•	4k HDR 120 FPS-CAP: Erlebe Oris Jump-’n’-Run-Action mit dem besten Spielgef&#252;hl und sofortiger Input-Umsetzung bei gleichbleibend scharfem und brillantem HDR-Bild auf der Xbox Series X.  Die Xbox Series S erm&#246;glicht 1080p HDR bei gleichem FPS-Cap von 120!<br />
+•	Dynamischer Hi-Fi-Sound mit Convolution Reverb: Erlebe Oris Soundtrack ebenso wie das Spielgeschehen in h&#246;chster Qualit&#228;t, mit dynamischer Bandbreite, fortschrittlichem Real-Time-Mixing und einen Raumklangerlebnis durch Convolution Reverb (Faltungshall), das bisher so in Echtzeit nicht m&#246;glich gewesen w&#228;re. Verf&#252;gbar auf Xbox Series X und S.<br />
+•	Verringerte Ladezeiten im Spiel: Oris Spielmodi laden deutlich schneller dank der eigens f&#252;r Xbox Series X|S entworfenen SSD.<br />
+•	Quick Resume: Wechsle nahtlos zwischen verschiedenen Titeln und nimm das Spiel einfach da wieder auf, wo du zuletzt aufgeh&#246;rt hast.<br />
+•	Xbox Smart Delivery:  Kaufe Ori and the Will of the Wisps f&#252;r deine Konsole und lade die optimierte Version f&#252;r dein Xbox-Ger&#228;t kostenlos herunter.
+</p>
+<p>
+ORI AND THE WILL OF THE WISPS IST EIN ABSOLUTES MUSS F&#220;R GAMER*: <br />
+•	98/100 GAMESBEAT „…&#160;ein berauschendes, ergreifendes Meisterwerk“<br />
+•	9,5/10 GAMEINFORMER „Eine fantastische Geschichte in einer atemberaubenden Welt”<br />
+•	9/10 IGN „Das h&#246;chste Lob f&#252;r eine Fortsetzung“<br />
+•	9,5/10 DESTRUCTOID „Ein fr&#252;her Meilenstein im noch jungen Jahrzehnt“<br />
+•	4,5/5 WINDOWS CENTRAL „Sensationell und irrwitzig&#160;…“<br />
+•	90/100 GAMERS HEROES „Ori and the Will of the Wisps ist eine Liebeserkl&#228;rung an seine Spieler.” <br />
+•	9/10 PRESS START AUS „Im letzten Akt bleibt wirklich kein Auge trocken.“<br />
+•	9/10 AUS GAMERS <br />
+•	9/10 EUROGAMER ITALY <br />
+•	91/100 GAMESTAR.DE <br />
+•	90/100 ATOMIX <br />
+•	5/5 HARDCORE GAMER <br />
+•	9,4/10 VANDAL <br />
+•	9/10 VIDEOGAMER <br />
+•	5/5 DAILY STAR: „Ein feingeschliffenes, emotionales Meisterwerk, das dem ganzen Metroidvania-Genre neues Leben einhaucht<br />
+•	9,2/10 MERISTATION <br />
+•	9/10 GAMESPEW „Ori and the Will of the Wisps ist vielleicht das sch&#246;nste Spiel, das ich je gespielt habe.“<br />
+•	9,8/10 THE GAMES MACHINE <br />
+•	4,5/5 SCREEN RANT „Eine spektakul&#228;re Fortsetzung“<br />
+•	9,5/10 EASYALLIES „Ein au&#223;ergew&#246;hnliches Spiel, das sich niemand entgehen lassen sollte.“<br />
+•	9,2/10 GAMERSKY <br />
+•	4,5/5 TWINFINITE „Ein magisches Metroidvania-Abenteuer“<br />
+•	94/100 COGconnected
+</p>
+<p>
+*Die Wertungen und Rezensionen beziehen sich auf die Windows PC und/oder Konsolenversion des Spiels. Source Metacritic.com 17.03.2020
+</p>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

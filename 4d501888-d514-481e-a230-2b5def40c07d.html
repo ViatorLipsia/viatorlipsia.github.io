@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>ARK: Survival Evolved</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> ARK: Survival Evolved</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>Nicht gespielt</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-Nie">Nie</a> </TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:18:36</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:40:55</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-27.08.2017">27.08.2017</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-67">67</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-69">69</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Shooter">Shooter</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Studio Wildcard">Studio Wildcard</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Snail Games">Snail Games</a><br/><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Snail Games USA">Snail Games USA</a><br/><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Studio Wildcard">Studio Wildcard</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Battle Royale">Battle Royale</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Massively Multiplayer Online (MMO)">Massively Multiplayer Online (MMO)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Split Screen">Split Screen</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.facebook.com/survivetheark" target="_blank">Facebook</a><br/><a href="https://twitter.com/survivetheark" target="_blank">Twitter</a><br/><a href="https://store.steampowered.com/app/346110" target="_blank">Steam</a><br/><a href="https://en.wikipedia.org/wiki/Ark:_Survival_Evolved" target="_blank">Wikipedia</a><br/><a href="http://www.playark.com" target="_blank">Official</a><br/><a href="https://itunes.apple.com/ca/app/ark-survival-evolved/id1280480538?mt=8" target="_blank">iPhone</a><br/><a href="https://play.google.com/store/apps/details?id=com.studiowildcard.wardrumstudios.ark&hl=en_US" target="_blank">Android</a><br/><a href="https://www.epicgames.com/store/en-US/product/ark/home" target="_blank">Epic</a><br/><a href="https://www.youtube.com/c/Survivetheark" target="_blank">YouTube</a><br/><a href="https://www.instagram.com/survivetheark" target="_blank">Instagram</a><br/><a href="https://discord.gg/playark" target="_blank">Discord</a><br/><a href="https://www.reddit.com/r/playark" target="_blank">Reddit</a><br/><a href="https://itunes.apple.com/us/app/id1280480538#?platform=ipad" target="_blank">iPad</a><br/><a href="https://www.twitch.tv/directory/game/ARK" target="_blank">Twitch</a><br/><a href="https://ark.wiki.gg/wiki/ARK:_Survival_Evolved" target="_blank">Wikia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					Als ein nackte/r Mann/Frau frierend und hungrig auf einer mysteriösen Insel gestrandet, musst du jagen, sammeln, Gegenstände fertigen, Früchte anpflanzen und einen Unterschlupf bauen, um zu überleben. Benutze Geschick und List, um auf ARK lebende Dinosaurier und urzeitliche Lebewesen zu töten, auszubrüten und zu reiten und verbünde dich mit Hunderten von Spielern oder spiele lokal! <br />
+<br />
+Die folgenden Features sind im Spiel seit dem Tag 1 Early Access release. Wir haben noch viele weitere Aspekte und Verfeinerungen für die fortlaufende Entwicklung geplant. Hier findest du, was du bisher in ARK erleben kannst: <br />
+<br />
+ZÄHME, TRAINIERE, ZÜCHTE UND REITE DINOSAURIER IN EINEM LEBENDEN ÖKOSYSTEM<br />
+<br />
+Dinosaurier, Kreaturen &amp; Züchten -- Über 50+ beim Start der Early Access und 100+ sind bis zum finalen Release geplant -- können mit einem herausfordernden Fang- und Anziehungsprozess gezähmt werden. Mit einbezogen ist das schwächen einer wilden Kreatur um sie bewusstlos zu schlagen und anschließend wieder mithilfe der richtigen Nahrung aufzupäppeln. Einmal gezähmt kannst du deinem Hausdino befehle geben, welchen er auch folgt, ganz davon abhängig, wie gut du es trainiert und gezähmt hast. Haudinos können im Level aufsteigen und benötigen Nahrung. Außerdem kannst du Ihnen Rüstungen geben, Items, die sie für dich tragen sollen, sie können jagen und die Beute in deine Basis bringen. Dies ist abhängig von ihrer Stärke. Größere Tiere können gesattelt werden um sie zu reiten. Fliege mit einem Pterodactyl über schneebedeckte Berge, hebe Verbündete über Wälle, renne mit einem Rudel Raptoren durch den Dschungel, trample auf einem gigantischen Brontosaurus über eine gegnerische Basis oder jage deine Beute auf dem Rücken eines wütenden T-Rex! Sei Teil eines dynamischen Ökosystemzyklus mit seiner eigenen Raubtier- und Beutehierarchie in der du nur eine Kreatur zwischen vielen, verschiedenen Spezies im Kampf um die Dominanz und das Überleben bist. Hausdinos können sich unter anderem mit dem anderen Geschlecht paaren, um selektives Züchten erfolgreicher Generation mithilfe eines merkmalbasierten Systems und dem erneuten kombinieren genetischen Erbguts zu ermöglichen. Dieser Prozess schließt unter anderem Ei-basierte Inkubation und Schwangerschaft bei Säugetieren ein. Oder, kurz gesagt, züchte und ziehe Dinobabies groß! <br />
+<br />
+NAHRUNG, WASSER, TEMPERATUR UND WETTER<br />
+<br />
+Du musst essen und trinken um zu überleben - mit verschiedenen Pflanzen und Fleischsorten mit unterschiedlichen Attributen, einschließlich Menschenfleisch. Eine funktionierende Wasserversorgung in deinem Zuhause und Inventar ist notwendig. Jede physische Aktion kosten dich Essen und Trinken, weitreichende Reisen stecken voller Gefahren. Das Gewicht deines Inventars macht dich langsamer, der Tag/Nachtzyklus zusammen mit zufällig generierten Wetterbedingungen fügen eine weitere Herausforderungen hinzu, während sich die Temperaturen ändern, dich schneller hungern lassen oder durstig machen. Baue ein Lagerfeuer oder eine Behausung sowie eine große Auswahl an Kleidung und Rüstung um dich gegen regionale Gefahren und extreme Temperaturschwankungen mithilfe des dynamischen In/Outdoor-Isolations-Berechnungssystems zu schützen! <br />
+<br />
+ERNTE, BAUE STRUKTUREN, FÄRBE GEGENSTÄNDE EIN<br />
+<br />
+Während du sowohl ganze Wälder fällen und Metall und andere wertvolle Ressourcen abbauen kannst, kannst du auch massive, mehrstöckige Bauwerke aus komplexen, einrastenden Teilen bauen. Mit eingeschlossen sind Rampen, Säulen, Fenster, Türen, Tore, ferngesteuerte Tore, Falltüren, Wasserrohre, Wasserhähne, Generatoren, Kabel, jede Menge anderer elektrischer Geräte, Leitern und viele, viele andere Dinge. Bauwerke haben eine Mechanik, zusammenzubrechen, wenn das Fundament zerstört wird. Daher ist es wichtig, deine Gebäude zu verstärken. Alle Bauwerke und Items können bemalt werden, um das Design deines Hauses an deine Wünsche anzupassen und dynamische, per-pixel bemalbare Schilder, Aushängeschilder und andere dekorative Objekte ganz nach deinen Wünschen einzufärben. Häuser reduzieren die extreme des Wetters und bieten dir und deinem Vorrat Schutz. Waffen, Kleidung und Rüstungen können ebenfalls eingefärbt werden um deinem persönlichen Stil zu entsprechen. <br />
+<br />
+PFLANZEN, ABBAUEN UND KULTIVIEREN<br />
+<br />
+Wähle Samen aus der wilden Vegetation um dich herum, pflanze sie in Beete die du platzierst, wässere sie und dünge sie mit Dünger (Alles hinterlässt Fäkalien nachdem Kalorien konsumiert wurden, welche kompostiert werden können. Manche Dünger sind besser als andere). Achte auf deine Pflänzchen und sie werden wachsen und köstliche und seltene Früchte hervorbringen, welche ebenfalls zum kochen einer breiten varietät an logischen Rezepten und Tränken genutzt werden können. Erkunde die Insel um weitere, seltene Samen mit nützlichen Eigenschaften zu finden! Vegetarier und Veganer werden aufblühen und es wird möglich sein, ARK ohne Gewalt zu erobern! <br />
+<br />
+BESCHWÖRE DIE ULTIMATIVEN LEBENSFORMEN<br />
+<br />
+Indem du sehr seltene Opfergaben an spezielle Beschwörungsorte bringst, kannst du dir die Aufmerksamkeit einer der gottgleichen, mythologischen Kreaturen in ARK sichern, welche anschließend zum Kampf erscheint. Diese gigantischen Monstrositäten bieten ein End-Game-Ziel für die erfahrensten Gruppen an Spielern und Ihrer Armee an Hausdinos und werden eine extrem wertvolle Ausbeute an Items bieten, wenn man überhaupt schafft, sie zu besiegen. <br />
+<br />
+STAMM-SYSTEM<br />
+<br />
+Erstelle einen Stamm und füge deine Freunde hinzu. Alle deine Hausdinos können von einem Verbündeten befohlen werden. Dein Stamm wird außerdem die Möglichkeit haben, an jedem deiner Heimat-Spawnpunkte zu respawnen. Befördere Mitglieder zu Stammführern um das Management zu erleichtern. Verteile Schlüssel-Items und Zugangscodes um den Zugang zu deinem Dorf zu bieten! <br />
+<br />
+RPG-STATISTIKEN<br />
+<br />
+Alle Gegenstände werden mithilfe von Blaupausen hergestellt, die verschiedene Statistiken und Qualitäten besitzen und für die Herstellung dementsprechende Ressourcen benötigen. Abgelegenere und schwer zu erreichende Orte quer über die Ark, bieten meist bessere Materialien, eingeschlossen der höchsten Berge, dunkelsten Höhlen und größten tiefen des Ozeans! Level deinen Charakter indem du Erfahrungspunkte sammelst, level deine Tiere und lerne neue &quot;Engramme&quot; um in der Lage zu sein, Gegenstände frei aus dem Gedächtnis herzustellen, ohne das Blaupausen dafür nötig wären, selbst wenn du stirbst! Passe das Aussehen deines Charakters an, indem du Haare, Augen, Hautfarben, sowie einer Reihe von Körperproportionen veränderst. <br />
+<br />
+HARDCORE-MECHANIKEN<br />
+<br />
+Jeder Gegenstand, den du baust, hat eine gewisse Haltbarkeit und wird kaputtgehen, wenn du diesen zu sehr benutzt und nicht reparierst. Wenn du das Spiel verlässt, verbleibt dein Charakter schlafend in der virtuellen Welt. Dein Inventar ist in Boxen im Charakter unterteilt. Alles kann gelooted oder geklaut werden, daher musst du für deine Sicherheit sorgen indem du Baust, dich mit anderen Spielern verbündest oder dir Dinos als Wächter zähmst. Der Tod ist permanent und du kannst andere Spieler sogar bewusstlos schlagen, fangen und ihnen Nahrung aufzwingen um sie deinem Willen zu beugen, ihnen Blut für eine eigene Transfusion abzuzapfen oder ihre Fäkalien aufsammeln um diese zu Dünger zu verarbeiten. Oder du benutzt sie als Futter für deine fleischfressenden Freunde! <br />
+<br />
+ERKUNDE UND ENTDECKE<br />
+<br />
+Die mysteriöse ARK ist eine beeindruckende und imposante Umgebung, bestehend aus natürlichen- und unnatürlichen Strukturen überhalb oder unterhalb der Erde und ebenso unterwasser. Während du die Geheimnisse der Insel erkundest, wirst du viele, zufällig generierte Kreaturen und seltene Blaupausen finden. Auch kannst du Erkundungsnotizen finden, die dynamisch in das Spiel gebracht werden, geschrieben und wunderschön verziert vor Jahrtausenden von vorherigen Einwohnern der ARK. Auf kreative Art stellen diese die Kreaturen und die Hintergrundgeschichte der ARK dar. Decke die gesamte Karte durch Erkundungen auf, markiere besonders interessante Punkte und baue dir einen Kompass oder ein GPS-System um das Erkunden mit anderen Spielern, mit denen du per Sprache, Text oder Langstrecken-Telefone kommunizieren kannst, zu vereinfachen. Baue und zeichne Schilder für andere Spieler um ihnen zu helfen oder sie vom Weg abzubringen... Dennoch... Wie wirst du die Schöpfer herausfordern, um die ARK zu erobern? Ein definitives Eng-Game ist in Planung. <br />
+<br />
+RIESIGE WELTBESTÄNDIGKEIT UND META-UNIVERSUM<br />
+<br />
+Auf den 100+ Spieler-Servern werden dein Charakter, deine Gebäude und deine Hausdinos im Spiel bleiben, selbst wenn du das Spiel verlässt. Du kannst deinen Charakter sogar im Netzwerk der ARK's verschieben, indem du zu einem Obelisk gehst und deine Daten in der Steam Economy hoch- oder herunterlädst. Eine Galaxie voller ARK's, jede anders als die andere, wartet darauf, von dir erobert und verändert zu werden, eine nach der anderen -- Spezielle, offizielle ARK's werden auf der Weltkarte für kurze Zeit und für spezielle Events enthüllt werden! <br />
+<br />
+STABILER STEAM-WORKSHOP MOD-SUPPORT<br />
+<br />
+Du kannst alleine und lokal im Einzelspieler-Modus spielen und deinen Charakter und deine Items zwischen inoffiziellen, gehosteten Servern vor- und zurück vom Einzel- zum Mehrspielermodus transferieren. Modifiziere das Spiel mit vollem Steam Workshop-Support und dem angepassten Unreal Engine 4 Editor. Finde heraus, wie wir unsere ARK mit unseren Karten und Werten als Beispiel erstellt haben. Hoste deinen eigenen Server und konfiguriere deine ARK präzise und an deine Wünsche angepasst. Wir sollen sehen, was du kreierst!<br />
+<br />
+BEEINDRUCKENDE GRAFIKEN DER NÄCHSTEN GENERATION<br />
+<br />
+Die erstklassige, hyperreale Bilddarstellung der Kreaturen in ARK wird durch eine extrem angepasste Unreal Engine 4 erreicht, die dynamische Lichtverhältnisse, globale Beleuchtung, Wettersysteme (Regen, Nebel, Schnee, etc.) und eine lebensechte Wolkensimulation, dank der neuesten Rendertechnik von DirectX11 und DirectX12, möglich macht. Die Musik stammt aus der Feder des preisgekrönten Komponisten von &quot;Ori and the Blind Forest&quot;, Gareth Coker!
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

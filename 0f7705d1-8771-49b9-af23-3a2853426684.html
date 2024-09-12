@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hell Let Loose</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Hell Let Loose</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>Nicht gespielt</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-Nie">Nie</a> </TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:13:30</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:16:32</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-Microsoft X Cloud">Microsoft X Cloud</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-06.06.2019">06.06.2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-77">77</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-75">75</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Shooter">Shooter</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Simulator">Simulator</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Team17">Team17</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Team17">Team17</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Multiplayer">Multiplayer</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://www.hellletloose.com" target="_blank">Official</a><br/><a href="https://www.facebook.com/HellLetLoose" target="_blank">Facebook</a><br/><a href="https://twitter.com/hell_let_loose" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/channel/UCqbQTnT8Wj3uzIc8TL9iKNg" target="_blank">YouTube</a><br/><a href="https://store.steampowered.com/app/686810" target="_blank">Steam</a><br/><a href="https://en.wikipedia.org/wiki/Hell_Let_Loose" target="_blank">Wikipedia</a><br/><a href="https://www.twitch.tv/directory/game/Hell%20Let%20Loose" target="_blank">Twitch</a><br/><a href="https://discord.gg/invite/hellletloose" target="_blank">Discord</a><br/><a href="https://www.reddit.com/r/HellLetLoose" target="_blank">Reddit</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<p>
+Werde Teil der wachsenden Spielerfahrung von Hell Let Loose – einem extrem fordernden Zweiter-Weltkrieg-Shooter mit epischen K&#228;mpfen. 100 Spieler mit Infanterie, Panzern, Artillerie, einer dynamischen Front und einzigartigem, ressourcenbasiertem Metaspiel.
+</p>
+<p>
+Erlebe die ber&#252;hmtesten K&#228;mpfe an der Westfront, darunter Carentan, Omaha Beach, Foy und mehr. Dies sind Schlachten in ganz neuem Ma&#223;stab ... Donnernde Panzer beherrschen das Gefecht, wichtige Nachschublinien versorgen die Front – du bist ein Zahnrad in der gigantischen Maschine der Kriegsf&#252;hrung. Hell Let Loose wirft dich in das Chaos des Krieges, in dem spielergesteuerte Fahrzeuge die Front dynamisch verschieben und einzelne Einheiten das Blatt in der Schlacht wenden k&#246;nnen.
+</p>
+<p>
+Auf den mehr als neun ausgedehnten Karten, die nach echten Aufkl&#228;rungsbildern und Sattelitenaufnahmen erstellt wurden, wird das Schlachtfeld in gro&#223;e Eroberungssektoren aufgeteilt – dies erm&#246;glicht stets neues Gameplay, bei dem zwei Streitm&#228;chte aus jeweils 50 Spielern sich auf Feldern und Br&#252;cken sowie in W&#228;ldern und St&#228;dten bis zum Tod bek&#228;mpfen und so die Front verschieben. Wird ein Sektor eingenommen, generiert dieser eine von drei Ressourcen f&#252;r dein Team, was ein komplexes Metaspiel bis zum Sieg erm&#246;glicht.
+</p>
+<p>
+Ein episches Kriegsgebiet
+</p>
+<p>
+Betritt ein Schlachtfeld mit 50 Spielern pro Seite auf gigantischen Karten. W&#228;hle eine von 14 spielbaren Rollen in Infanterie, Aufkl&#228;rung oder Panzerdivision, alle mit eigenen Waffen, Fahrzeugen und Ausr&#252;stungsgegenst&#228;nden. Spiele als Offizier, Aufkl&#228;rer, Maschinengewehrsch&#252;tze, Sanit&#228;ter, Ingenieur, Panzerkommandant und mehr, um jeden Aspekt des Kampfes im Zweiten Weltkrieg zu erleben.
+</p>
+<p>
+Herausforderndes Gameplay
+</p>
+<p>
+Erlebe mehr als neun ber&#252;hmte Schlachtfelder des Zweiten Weltkriegs – Omaha Beach, Carentan und Foy bilden das Herzst&#252;ck von Hell Let Loose. Die historischen Fahrzeuge, Waffen und Uniformen sind enorm detailliert und der Kampf ist ebenso brutal und blutig wie er es damals war. Die Schlachten finden auf gigantischen, ma&#223;stabsgetreuen Karten statt, die mithilfe von Archivaufnahmen und Satellitenbildern im hochaufl&#246;senden Detailgrad der Unreal Engine 4 erstellt wurden.
+</p>
+<p>
+Zusammen k&#228;mpfen – zusammen siegen
+</p>
+<p>
+In Hell Let Loose geht es nicht darum, wie viele Gegner man erledigt – Teamwork ist ein zentraler Teil des Gameplays. Kommunikation ist enorm wichtig. Die Spieler arbeiten unter der F&#252;hrung der Offiziere und des Kommandanten zusammen und erobern strategische Ziele auf dem Schlachtfeld, um die Gegenseite zu besiegen. Hell Let Loose erfordert Teamwork und Kommunikationsf&#228;higkeiten, um zu siegen ... und zu &#252;berleben.
+</p>
+<p>
+Einzigartiges Metaspiel
+</p>
+<p>
+K&#228;mpfe f&#252;r den Sieg, indem du auf einem gro&#223;en, sich entwickelnden Schlachtfeld durch die gegnerischen Reihen brichst. Das einzigartige Sektoreroberungs-Metaspiel fordert die Spieler heraus, st&#228;ndig gro&#223;angelegte taktische Entscheidungen dar&#252;ber zu treffen, wo sie angreifen oder verteidigen. Verwalte Ressourcen und Vorr&#228;te, um Unterst&#252;tzung, Bomber und Verst&#228;rkungen anzufordern oder Gegner zu flankieren. Strategie ist der Schl&#252;ssel zum Erfolg.
+</p>
+<p>
+Wichtigste Features:
+</p>
+<p>
+• K&#228;mpfe in epischen Mehrspielerk&#228;mpfen mit 50 Spielern je Seite.<br />
+• Zwei einzigartige Spielmodi – Offensive und Kriegsf&#252;hrung<br />
+• Neun Karten mit weiteren in Planung – lande am Omaha Beach, k&#228;mpfe dich durch Carentan und erobere den gefrorenen Wald von Foy, bevor du H&#252;gel 400 eroberst.<br />
+• Du schl&#228;gst nie dieselbe Schlacht erneut – es gibt 99 Eroberungspunkte pro Karte, was tausende m&#246;glicher Kampfverl&#228;ufe nach sich zieht.<br />
+• Spiele und meistere eine oder mehrere von 14 einzigartigen Rollen, darunter:<br />
+Offizier, Sanit&#228;ter, Maschinengewehrsch&#252;tze, Kommandant, Besatzungsmitglied, Scharfsch&#252;tze und mehr.<br />
+• Regelm&#228;&#223;ige Updates mit neuen Karten, Waffen, Features und Fehlerbehebungen.<br />
+• Realistische Ballistik und R&#252;cksto&#223;muster erm&#246;glichen lebensechtes Schussverhalten.<br />
+• Einzigartiger, dreigeteilter Spiel-Sprachchat: Nahbereich, Befehlshaber und Einheiten.<br />
+• Dauerhafter Spielerfortschritt – Zeige deine Erfahrung mit neuen Uniformen, Ausr&#252;stungen und Anpassungsoptionen, wenn die einzelnen Rollen und dein Spielerprofil in der Stufe aufsteigen.<br />
+• Setz dich ans Steuer vieler Fahrzeuge des Zweiten Weltkriegs – darunter Tiger, Sherman, Stuart und Puma – und freu dich auf viele weitere.<br />
+• Bombardiere den Gegner mit einer Reihe schwerer Waffen und l&#246;sche ihn mit Panzerabwehrwaffen und Artillerie aus.<br />
+• Erbaue gepanzerte Stellungen, um deine Position zu befestigen.<br />
+• Schmettere mit Teamwork durch die gegnerische Front und lass dich durch nichts vom Sieg abhalten.<br />
+• Spiele als Kommandant und f&#252;hre dein Team zum Sieg, indem du verschiedene F&#228;higkeiten einsetzt und deine Soldaten &#252;ber die taktische Karte anleitest.
+</p>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

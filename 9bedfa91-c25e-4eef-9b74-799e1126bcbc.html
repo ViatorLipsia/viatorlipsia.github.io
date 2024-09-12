@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Inkulinati</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Inkulinati</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>Nicht gespielt</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-Nie">Nie</a> </TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:13:30</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:16:46</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-Microsoft X Cloud">Microsoft X Cloud</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-22.02.2024">22.02.2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Strategy">Strategy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Yaza Games">Yaza Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Daedalic Entertainment">Daedalic Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/957960" target="_blank">Steam</a><br/><a href="https://www.inkulinati.com/" target="_blank">Official</a><br/><a href="https://twitter.com/YazaGames" target="_blank">Twitter</a><br/><a href="https://www.instagram.com/yazagames" target="_blank">Instagram</a><br/><a href="https://www.gog.com/game/inkulinati" target="_blank">GOG</a><br/><a href="https://www.twitch.tv/directory/game/Inkulinati" target="_blank">Twitch</a><br/><a href="https://www.youtube.com/@YazaGames_Inkulinati/videos" target="_blank">YouTube</a><br/><a href="https://www.facebook.com/inkulinati" target="_blank">Facebook</a><br/><a href="https://store.epicgames.com/en-US/p/inkulinati-b60b1c" target="_blank">Epic</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<p>
+Werde ein Meister der Lebenstinte, nimm deine Feder zur Hand und stelle Mal um Mal deine Taktik zusammen, um zum besten Inkulinati aller Zeiten ernannt zu werden!
+</p>
+<p>
+INKULINATI IST ECHTEN MITTELALTERLICHEN MARGINALIEN NACHEMPFUNDEN<br />
+Nach 700 Jahren wird diesen bizarren Kunstwerken in einem Videospiel Leben eingehaucht, die beweisen, dass die Menschen im Mittelalter auch schon „Memes“ hatten und &#252;ber dieselben albernen Themen gelacht haben wie wir heute. Dich erwarten schwertschwingende Hasen, Hunde mit Speeren, Trompeten, die da stecken, wo die Sonne nicht hinscheint, menschenfressende Schnecken und mehr. Vieles, vieles mehr ...
+</p>
+<p>
+K&#196;MPFE WIE EIN INKULINATI<br />
+Die Inkulinati geh&#246;ren einer legend&#228;ren Gruppe an, die auf den Seiten eines mittelalterlichen Manuskripts gegeneinander k&#228;mpft. Sie k&#228;mpfen, indem sie Bestien mit Lebenstinte zeichnen. Dank dieser magischen Substanz erwachen diese Kreaturen zum Leben und fechten epische Schlachten aus. Bewege deine Untiere &#252;ber das Schlachtfeld, interagiere mit ihnen, setze Hindernisse zu deinem Vorteil ein und sammle mehr Lebenstinte, um neue Untiere zu zeichnen und so deinem Gegner ein Schnippchen zu schlagen.
+</p>
+<p>
+SCHALTE MEHRERE T&#214;DLICHE (UND BIZARRE) UNTIERE FREI<br />
+Esel spielen mit ihren Hintern Trompete, Bischofskatzen bezwingen Ketzer mit Gebeten, tr&#228;ge aber t&#246;dliche Schnecken fressen andere K&#228;mpfer bei lebendigem Leib und noch vieles mehr. Vieles, vieles mehr. Jede Einheit verf&#252;gt &#252;ber besondere Fertigkeiten und wartet auf deinen Befehl.
+</p>
+<p>
+BESONDERE, ENTSCHEIDENDE AKTIONEN DER INKULINATI<br />
+Nicht nur deine Untiere sorgen f&#252;r Chaos und Zerst&#246;rung. Zerschlage die gegnerischen Einheiten mit deinen F&#228;usten, zeichne Hindernisse, um Barrieren zu erschaffen, verlege deine Einheiten mit deinem Finger oder sprenge deine Truppen, um reines Unheil zu stiften. Aber vergiss nicht – dein Gegner kann dasselbe tun.
+</p>
+<p>
+PASSE DEINE STRATEGIE AN JEDEN KAMPF AN<br />
+Jeder Inkulinati hat seine eigene Armee mit verschiedenen Untieren, die jeweils &#252;ber eigene F&#228;higkeiten, St&#228;rken und leider (oder zum Gl&#252;ck, je nachdem auf wessen Seite du stehst) auch Schw&#228;chen verf&#252;gen. Aber nicht nur die Armeen haben einen Einfluss auf das Ergebnis eines Duells. Jedes Schlachtfeld ist eigen und birgt individuelle Gefahren, auf die du achten solltest, oder M&#246;glichkeiten, die du ergreifen kannst. Du musst mit K&#246;pfchen deine Strategie anpassen, um die gegnerische Inkulinati-Armee auf dem jeweiligen Schlachtfeld zu schlagen.
+</p>
+<p>
+EINE EINZELSPIELER-KAMPAGNE<br />
+Enth&#252;lle das Mysterium und die Geheimnisse der Inkulinati und stelle dich Gegnern wie dem Tod, Dante Alighieri und anderen. Geh in die Welt hinaus und beginne dein Abenteuer! K&#228;mpfe gegen die gr&#246;&#223;ten Inkulinati-Meister des Landes, z&#228;hme ungez&#228;hmte Untiere, baue deine ultimative Armee auf und versuche, deinen Meister aus den Klauen des Todes zu befreien – und am allerwichtigsten: Veranstalte die gr&#246;&#223;te Party, die das Mittelalter je erlebt hat, sobald du deine gro&#223;e Aufgabe erf&#252;llt hast! Hossa!
+</p>
+<p>
+ERSCHAFFE UND ENTWICKLE DEINE EIGENEN FIGUREN<br />
+Als angehender Inkulinati-Meister erschaffst du deine eigenen Winzigen Inkulinati. Auf deiner Reise wirst du die geheimen Zeichentechniken f&#252;r neue Untiere und Inkulinati-Handaktionen erlernen, die du f&#252;r deine Armee w&#228;hlen kannst. Du kannst ein tapferer Ritter sein, der seine loyalen Truppen furchtlos dem Gegner entgegenwirft. Oder vielleicht gehst du mit etwas mehr Feingef&#252;hl vor? Dann kannst du eine Nonne sein, die mit der Macht der Gebete ihre Gegner verwirrt und ihre eigenen Diener heilt. Diese und andere Spielstile warten darauf, von dir entdeckt und f&#252;r deine Taktiken eingesetzt zu werden. Finde deinen Spielstil!
+</p>
+<p>
+JEDE SCHLACHT HAT IHRE EIGENE GESCHICHTE<br />
+Um jede Schlacht f&#252;r die kommenden Generationen festzuhalten, werden die dramatischen (oder ulkigen) Geschehnisse St&#252;ck f&#252;r St&#252;ck und detailliert als Text &#252;ber dem Schlachtfeld beschrieben
+</p>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

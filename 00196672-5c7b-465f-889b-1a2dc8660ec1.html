@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Minion Masters</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Minion Masters</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>1h 7m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-18.07.2022">18.07.2022</a> 8:37:34</TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:18:36</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:41:09</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Gespielt">Gespielt</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-24.05.2019">24.05.2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-66">66</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Card & Board Game">Card & Board Game</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Real Time Strategy (RTS)">Real Time Strategy (RTS)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Strategy">Strategy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-BetaDwarf">BetaDwarf</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-BetaDwarf">BetaDwarf</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Massively Multiplayer Online (MMO)">Massively Multiplayer Online (MMO)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/489520" target="_blank">Steam</a><br/><a href="http://minionmastersthegame.com" target="_blank">Official</a><br/><a href="https://minionmasters.gamepedia.com/Minion_Masters" target="_blank">Wikia</a><br/><a href="https://www.facebook.com/forcedthegame" target="_blank">Facebook</a><br/><a href="https://twitter.com/BetaDwarf" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/channel/UCjhwA3l54_aC61EvtjElHWw" target="_blank">YouTube</a><br/><a href="https://www.reddit.com/r/MinionMasters" target="_blank">Reddit</a><br/><a href="https://play.google.com/store/apps/details?id=com.betadwarf.minionmasters.googleplay" target="_blank">Android</a><br/><a href="https://www.twitch.tv/directory/game/Minion%20Masters" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					Nimm an epischen Kämpfen 1 gegen 1 oder 2 gegen 2 teil in diesem schnellen Strategie-Dienerspiel, das leicht zu erlernen aber schwer zu meistern ist. <br>Bei Minion Masters gibt es viele verschiedene Meister mit einzigartigen Heldenfähigkeiten und du sammelst tolle Diener wie starke Dämonen, niedliche Kreaturen, vernichtende Zauber und mehr. <br>Nutze deine Diener, um den gegnerischen Meister zu zerstören! Wenn ein Diener beschworen wurde, kann er nicht mehr gesteuert werden, du musst ihn also weise platzieren, um zu gewinnen!<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/489520/extras/SteamDescription_Masters_Slimmer_Border3_Speedy_Opt1.gif?t=1724749695" /><h2 class="bb_tag"><strong>Spielmodi</strong></h2><ul class="bb_ul"><li><strong>1 gegen 1:</strong> Kämpfe gegen andere Spieler und schau, wie weit du es mit deinen Fähigkeiten schaffst. Der Rang des Großmeisters erwartet dich, wenn du einer der Besten wirst!<br></li><li><strong>2 gegen 2:</strong> Verbünde dich mit einem Freund oder mit Fremden, um andere Teams auszuschalten in diesen unglaublichen 2 gegen 2 Kämpfen. Doppelt so viele Diener, doppelt so viel Action! <br></li><li><strong>1 gegen 1 Draft:</strong> Erstelle ein Deck aus einer zufälligen Auswahl an Karten. Du bekommst bessere Belohnungen, wenn du mehr Gegner besiegst, aber sei vorsichtig: 3 Niederlagen und du bist raus!<br></li><li><strong>Chaos:</strong> Jede Woche neue verrückte Regeln zum Ausprobieren!</li></ul><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/489520/extras/SteamDescription_Gameplay_Border3_Fast_Opt2.gif?t=1724749695" /><h2 class="bb_tag"><strong>Legendäre Meister</strong></h2>Du musst lernen, wie du die Fähigkeiten deines Meisters bestmöglich einsetzt und dein Deck um ihn herum aufbaust, um zu siegen! Jeder Meister hat eine einzigartige Persönlichkeit und einen eigenen Spielstil mit Möglichkeiten für verschiedene Strategien! Nur die ehrgeizigsten Spieler lernen, wie man das Potential eines Meisters voll ausschöpft!<h2 class="bb_tag"><strong>Schalte mächtige Diener und spektakuläre Zauber frei und erschaffe sie!</strong></h2>Über 260 einzigartige Karten (Diener, Zauber, Gebäude) und es werden immer mehr!<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/489520/extras/SteamDescription_MinionsCombo_Border3_Speedy_Opt1.gif?t=1724749695" /><br><br><ul class="bb_ul"><li>Wie der friedliebende Manahauch, der dir zusätzliches Mana gibt, wenn er glücklich ist – und das ist er immer!<br></li><li>Oder der Troubadour, der sich weigert, irgendetwas anderes zu tun, als Dudelsack zu spielen und so alle anderen Diener dazu bringt, ihn anzugreifen, ganz egal, was um sie herum geschieht. Sie wollen einfach nur, dass es aufhört... <br></li><li>Du könntest natürlich auch das Unsterbliche Skelett bekommen, das wieder zum Leben erwacht, nachdem es getötet wurde!</li></ul><h2 class="bb_tag"><strong>Kostenlose Erweiterungen!</strong></h2>Wir fügen ständig neue Inhalte zum Spiel hinzu. Uns ist es sehr wichtig, dass du immer neue Erfahrungen machen und neue Herausforderungen meistern kannst! Viele unserer neuen Inhalte kommen aus unseren großen Erweiterungspaketen, die neue Karten, Skins, Avatare, Emotes oder sogar neue Meister enthalten und ungefähr alle zwei Monate veröffentlicht werden.<h2 class="bb_tag"><strong>Ereignisse</strong></h2>Wir möchten mit Minion Masters ein lustiges und immer aufregendes Spielerlebnis erschaffen, daher gibt es bei uns regelmäßig neue Ereignisse, die für einen bestimmten Zeitraum verfügbar sind. Dazu gehören Herausforderungen, Freundschaftsveranstaltungen, Turniere sowie neue Spielmodi, Bonus-Aufgaben und mehr.<h2 class="bb_tag"><strong>Gemeinschaft</strong></h2>Wir haben sowohl in unseren Foren als auch im Spiel eine tolle Gemeinschaft, in der Entwickler und Spieler Fragen beantworten, sich unterhalten und dir dabei helfen, mehr über das Spiel zu erfahren. <br>Schließe dich uns an!!<h2 class="bb_tag"><strong>Kosmetik</strong></h2>Passe deine Figur mit epischen Skins an! <br><br>Du kannst jetzt sogar deine Spielfeldseite anpassen, indem du deine Arena gegen eine neue austauschst. Du möchtest in einer Lava-Welt kämpfen? Oder in einem versunkenen Tempel? Oder auf einem Friedhof? Es gibt viele Optionen und die Wahl liegt ganz bei dir.<h2 class="bb_tag"><strong>E-Sport</strong></h2>Um das Spiel herum sind bereits mehrere von Communitys gesteuerte Turniere entstanden. Jeden Monat finden verschiedene Turniere statt, bei manchen gibt es Bargeld zu gewinnen, bei anderen geht es um spielinterne Währung oder einfach um die Ehre! <br>Bist du der Beste? Beweise es!<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/489520/extras/SteamDescription_Ramagaarl_Border3_Speedy_Opt1.gif?t=1724749695" /><br><br>Weitere Informationen darüber und andere interessante Themen findest du auf unserem Blog: <a href="https://steamcommunity.com/linkfilter/?u=http%3A%2F%2Fblog.betadwarf.com%2F" target="_blank" rel=" noopener"  >http://blog.betadwarf.com/</a><h2 class="bb_tag"><strong>Funktion Twitch-Streamer</strong></h2>Mit der Twitch-Funktion kannst du dein Twitch-Konto verbinden und Zugang zu unserer einzigartigen Streamer-Arena erhalten. In der Streamer-Arena verwandeln sich deine Zuschauer in kleine Hauche, die auf der Zuschauertribüne sitzen und dich im Spiel anfeuern können. Wenn du bei unseren Streamer-Ereignissen gewinnst, kannst du Belohnungen für dich und deine Zuschauer erhalten. Twitch-Streamer gibt es auch im Spielmenü, damit die anderen sehen können, wer gerade etwas überträgt.<h2 class="bb_tag"><strong>Funktionsliste</strong></h2><ul class="bb_ul"><li>1 gegen 1 mit Rangliste<br></li><li>2 gegen 2 mit Rangliste<br></li><li>2 gegen 2 mit Rangliste, vorarrangiert<br></li><li>Draft<br></li><li>PvE-Herausforderungen<br></li><li>10+ Meister<br></li><li>Über 260 Karten/Diener (bald gibt es noch mehr!)<br></li><li>Ereignisse<br></li><li>Aktive Gemeinschaft<br></li><li>E-Sport-Szene<br></li><li>Erschaffungssystem<br></li><li>Chat und Emotes im Spiel.<br></li><li>Wiederkehrende Stream-Ereignisse<br></li><li>Meisterskins (bald gibt es noch mehr!)<br></li><li>Benutzerdefinierte Arena-Skins. (bald gibt es noch mehr!)<br></li><li>Wiederholungen!<br></li><li>Schnelle Spielupdates!<br></li><li>Sammle deine eigenen Arenen!<br></li><li>Saison-Ranglisten!<br></li><li>Tolle 3-D-Grafik, die wir ständig aktualisieren und weiterentwickeln!<br></li><li>Wähle eine von einer <strong>Fantastilliarde</strong> Strategien aus<br></li><li>Haben wir die Hauche erwähnt? Es gibt sogar einen Königshauch!</li></ul><h2 class="bb_tag"><strong>Spielverlaufsbeschreibung</strong></h2><ul class="bb_ul"><li>Jeder Spieler hat einen Pool an Mana und ein Deck mit 10 Karten (Diener/Zauber/Gebäude). <br>Eine Karte kostet 0-10 Mana und dein Mana wird beim Spiel mit der Zeit wiederhergestellt.<br></li><li>Es gibt zwei Brücken in der Mitte, die du einnehmen und unter Kontrolle behalten musst. Sie generieren Erfahrung, damit dein Held seine Fähigkeiten verbessern kann, bevor der Gegner das tut.<br></li><li>Du platzierst Diener auf deiner Seite der Arena. Das Ziel besteht darin, dass sie den Turm des Gegners zerstören. <br></li><li>Diener haben ihren eigenen Willen und wenn du sie einmal beschworen hast, können sie nicht mehr kontrolliert werden, also platziere sie weise!<br></li><li>Die meisten Diener haben einzigartige Fähigkeiten. Ein paar Beispiele: Gebietsschäden, Heilen, Teleportieren, Mana-Regen, Fliegen und mehr.<br></li><li>Mit Zaubern kann der Spielverlauf zu deinen Gunsten verändert werden. Zauber wie Heilen, Gedankenkontrolle oder Betäubung können in den Händen eines geschickten Spielers verheerend sein.<br></li><li>Jeder Held hat einzigartige Fähigkeiten, die das Spiel drastisch verändern, wenn sie aktiv werden. <br></li><li>Aufmerksamkeit, Strategie und Engagement sind erforderlich, wenn du bei diesem Spiel gut werden willst.</li></ul><br>Mach mit und viel Spaß in unserer tollen Welt bei Minion Masters! <br>- Das Team von Betadwarf
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Disney Dreamlight Valley</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Disney Dreamlight Valley</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>Nicht gespielt</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-Nie">Nie</a> </TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:13:30</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:14:59</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-Microsoft X Cloud">Microsoft X Cloud</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-05.12.2023">05.12.2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-71">71</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Gameloft">Gameloft</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Gameloft">Gameloft</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.epicgames.com/en-US/p/disney-dreamlight-valley" target="_blank">Epic</a><br/><a href="https://store.steampowered.com/app/1401590/Disney_Dreamlight_Valley" target="_blank">Steam</a><br/><a href="https://disneydreamlightvalley.com/" target="_blank">Official</a><br/><a href="https://www.youtube.com/channel/UC2Dw_6M4WG-zxKIVRrHsdNw" target="_blank">YouTube</a><br/><a href="https://www.facebook.com/DisneyDreamlightValley" target="_blank">Facebook</a><br/><a href="https://twitter.com/DisneyDLV" target="_blank">Twitter</a><br/><a href="https://instagram.com/disneydreamlightvalley" target="_blank">Instagram</a><br/><a href="https://discord.gg/Q2PAkGJNBS" target="_blank">Discord</a><br/><a href="https://www.twitch.tv/directory/game/Disney%20Dreamlight%20Valley" target="_blank">Twitch</a><br/><a href="https://en.wikipedia.org/wiki/Disney_Dreamlight_Valley" target="_blank">Wikipedia</a><br/><a href="https://www.reddit.com/r/DreamlightValley" target="_blank">Reddit</a><br/><a href="https://disneydreamlightvalley.fandom.com/wiki/Disney_Dreamlight_Valley_Wiki" target="_blank">Wikia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<p>
+BEINHALTET 8.000 MONDSTEINE*
+</p>
+<p>
+Disney Dreamlight Valley ist eine Mischung aus einer Lebenssimulation und einem Abenteuerspiel voller Aufgaben, Erkundungen und spannender Aktivit&#228;ten mit alten und neuen Disney- und Pixar-Freunden.
+</p>
+<p>
+Dreamlight Valley war einst ein idyllisches Land, in dem Disney- und Pixar-Charaktere in Harmonie lebten&#160;… bis zum Vergessen. Nachtdornen &#252;berwucherten das Land und durchtrennten die wundervollen Erinnerungen, die mit diesem magischen Ort verbunden waren. Da sie nirgendwo anders hin konnten, zogen sich die hoffnungslosen Bewohner des Dreamlight Valley hinter verschlossene T&#252;ren im Traumschloss zur&#252;ck.
+</p>
+<p>
+Jetzt liegt es an dir, die Geschichten dieser Welt zu entdecken und die Magie zur&#252;ck zum Dreamlight Valley zu bringen!
+</p>
+<p>
+Entdecke die Geheimnisse des Dreamlight Valley<br />
+Befreie das Traumschloss aus dem heimt&#252;ckischen Griff des Vergessens und schalte einzigartige Reiche beliebter Disney- und Pixar-Charaktere frei. Schalte die Reiche gro&#223;er K&#246;niginnen und K&#246;nige wie Anna und Simba frei. Jedes Reich bietet einzigartige Herausforderungen mit R&#228;tseln, die es zu l&#246;sen gilt, damit Freundschaft ins Tal zur&#252;ckkehren kann.<br />
+Du beginnst dein Abenteuer im Tal, aber deine Reise f&#252;hrt dich bis zur Unendlichkeit&#160;… und noch viel weiter! Finde heraus, was im Wald der Tapferkeit lauert und erkunde die tiefsten H&#246;hlen, w&#228;hrend du dich den Herausforderungen der legend&#228;ren Helden und B&#246;sewichten von Disney und Pixar stellst. Wer wei&#223;, wen oder was&#160;… du vielleicht entdecken wirst.
+</p>
+<p>
+Schmiede Freundschaften mit Disney- &amp; Pixar-Charakteren<br />
+G&#228;rtnere mit WALL&#183;E, koche mit Remy oder entspanne dich beim Angeln mit Goofy. Es gibt keinen besseren Weg, zu sammeln, herzustellen und das Tal wieder aufzubauen, als mit einem Freund! Von wundersch&#246;nen Prinzessinnen bis hin zu fiesen Schurken hat jeder Bewohner des Dreamlight Valley seinen eigenen Handlungsbogen, seine Aufgaben und Belohnungen. Triff dich an t&#228;glichen Treffpunkten und freunde dich mit einigen deiner Lieblingsfiguren von Disney und Pixar an.
+</p>
+<p>
+Gib dem Tal seinen fr&#252;heren Glanz zur&#252;ck<br />
+Befreie das Tal aus den Klauen des Vergessens und gib Dreamlight Valley seinen fr&#252;heren Glanz zur&#252;ck, indem du ihm deinen eigenen Stil verleihst. Im Dreamlight Valley kannst du mit einer vollst&#228;ndig anpassbaren Anordnung, kreativer Landschaftsgestaltung und Tausenden von Dekorationselementen die perfekte Nachbarschaft nur f&#252;r dich bauen.<br />
+Wirst du dich am Strand neben Vaiana niederlassen oder Buzz Lightyear auf dem Hauptplatz als Nachbarn w&#228;hlen? 
+</p>
+<p>
+Zeige deinen Disney-Stil<br />
+Bring deine innere Prinzessin, deinen inneren B&#246;sewicht oder Disney-Schurken zum Vorschein! Stelle einzigartige Outfits zusammen und dekoriere dein Zuhause mit Tausenden von fantastischen Gegenst&#228;nden. Mit dem „Ein Hauch von Magie“-Ger&#228;t kannst du sogar deine eigenen Designs mit von Disney und Pixar inspirierten Aufklebern erstellen!<br />
+Mache mit der Kamera im Spiel ein Sonnenuntergangs-Selfie mit Mirabel, halte eine kulinarische Kreation mit Remy fest oder genie&#223;e einfach nur den Moment.
+</p>
+<p>
+Ein Spiel in st&#228;ndiger Weiterentwicklung<br />
+Neue Inhalte bedeuten, dass es immer etwas Neues zu entdecken gibt. Triff neue Charaktere im Tal, sieh dir die neuesten Kleidungs- und M&#246;belkollektionen in Dagoberts Laden an und schlie&#223;e herausfordernde Events im Spiel ab! Tr&#228;ume dich regelm&#228;&#223;ig zur&#252;ck in das Dreamlight Valley, um neue Abenteuer zu entdecken!
+</p>
+<p>
+*Mondsteine sind eine Spielw&#228;hrung, die kostenlos durch das Erf&#252;llen von Aufgaben im Spiel gesammelt oder mit echtem Geld gekauft werden k&#246;nnen. Sie werden verwendet, um den Sternenpfad freizuschalten (ein vom Kampfpass inspiriertes System, das kosmetische Gegenst&#228;nde im Spiel gew&#228;hrt, wenn ein Spieler verschiedene Aufgaben und Missionen erf&#252;llt). Mondsteine k&#246;nnen auch verwendet werden, um den Fortschritt auf dem Sternenpfad zu beschleunigen. Au&#223;erdem k&#246;nnen Mondsteine zum Kauf von kosmetischen Gegenst&#228;nden im Spiel verwendet werden.
+</p>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

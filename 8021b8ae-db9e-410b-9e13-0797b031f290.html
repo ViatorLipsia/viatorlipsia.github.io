@@ -1,0 +1,297 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Warhammer 40,000: Darktide</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Warhammer 40,000: Darktide</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>Nicht gespielt</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-Nie">Nie</a> </TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:13:31</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:20:45</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-Microsoft X Cloud">Microsoft X Cloud</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-30.11.2022">30.11.2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-71">71</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-75">75</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Shooter">Shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Fatshark">Fatshark</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Fatshark">Fatshark</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1361210" target="_blank">Steam</a><br/><a href="https://www.playdarktide.com/" target="_blank">Official</a><br/><a href="https://en.wikipedia.org/wiki/Warhammer_40,000:_Darktide" target="_blank">Wikipedia</a><br/><a href="https://www.facebook.com/PlayDarktide" target="_blank">Facebook</a><br/><a href="https://twitter.com/Darktide40K" target="_blank">Twitter</a><br/><a href="https://instagram.com/playdarktide" target="_blank">Instagram</a><br/><a href="https://www.youtube.com/channel/UCfhGCMntOdvnorxaMNCbDOg" target="_blank">YouTube</a><br/><a href="https://discord.gg/Gf44efP" target="_blank">Discord</a><br/><a href="https://www.twitch.tv/directory/game/Warhammer%2040%2C000%3A%20Darktide" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<p>
+Entrei&#223;e die Stadt Tertium den Horden blutr&#252;nstiger Feinde in diesem intensiven, brutalen Action-Shooter. Warhammer 40,000: Darktide ist ein neues Koop-Erlebnis des preisgekr&#246;nten Teams bekannt f&#252;r die Vermintide-Serie.
+</p>
+<p>
+In den Tiefen der Makropole droht die Saat der Verderbnis, sich in eine &#252;berw&#228;ltigende Flut der Finsternis zu verwandeln. Eine mysteri&#246;se, finstere und noch unbekannte Macht versucht, die Kontrolle &#252;ber die Stadt zu erlangen. Es liegt an dir und deinen Verb&#252;ndeten in der Inquisition, den Feind zu beseitigen, bevor die Stadt im Chaos versinkt.
+</p>
+<p>
+Mit dem Fall von Tertium erheben sich die Ausgesto&#223;enen.
+</p>
+<p>
+Rasanter Hybrid-Kampfstil<br />
+Nach dem Vorbild des un&#252;bertroffenen Nahkampfes in Vermintide 2, bringt Warhammer 40,000: Darktide ein intensives Feuergefecht im Stil von WH40K ins Spiel. Beherrsche im Gefecht mit diversen Feinden das Gleichgewicht zwischen Fernkampf und Nahkampf. Sp&#252;re jeden Schwung, Hieb und Schnitt deines Kettenschwerts oder lasse dein Lasergewehr Fleisch versengen.
+</p>
+<p>
+Sterbt allein oder leidet gemeinsam<br />
+Darktide ist ein kooperatives Spiel. Sich zu weit von der Gruppe zu entfernen, birgt das Risiko, von Feinden wie dem Chaoshund oder der moebianischen J&#228;gerin bestraft zu werden, die darauf aus sind, Einzelg&#228;nger festzusetzen oder gefangen zu nehmen. F&#228;llst du einmal einem solchen Gegner in die H&#228;nde, k&#246;nnen dich nur deine Teammitglieder retten! Au&#223;erdem l&#228;dt sich deine angeborene Z&#228;higkeit – deine Entschlossenheit, die Schmerzen zu &#252;berstehen – nur in der N&#228;he deines Einsatzteams wieder auf.
+</p>
+<p>
+Dein Charakter, dein Spielstil<br />
+Erschaffe deinen eigenen, einzigartigen Charakter und w&#228;hle individuell Aussehen, Stimme und Ursprung. Mit deiner Klassenwahl bestimmst du die einzigartigen Eigenschaften und F&#228;higkeiten, mit denen du in den Kampf ziehst. Bist du ein erfahrener Soldat der Imperialen Armee, ein scharfz&#252;ngiger Au&#223;enseiter oder ein hitziger Eiferer? Du hast die Wahl.
+</p>
+<p>
+Tertium – eine Makropole, die kurz vor dem Einsturz steht<br />
+Tauche ein in die blutige, dystopische Welt von Warhammer 40,000. Von der gl&#252;henden Hitze der industriellen Fabriken, bis hin zur Wasser-Wartungszone, heimgesucht von unaufh&#246;rlichem saurem Regen – Tertium Hive ist selbst zu besten Zeiten ein strenger, gnadenloser Ort. Deine Aufgabe ist es, im Namen der eifernden Inquisition Missionen zur Beseitigung von Gefahren in den Tiefen der Makropole zu erf&#252;llen oder dabei umzukommen.
+</p>
+<p>
+Das Chaos schl&#228;ft niemals<br />
+Stelle dich auf die Launen des Chaos ein, mit Umst&#228;nden – Mutatoren, die Missionen um unvorhergesehene Herausforderungen erweitern. Dein Team muss anpassungsf&#228;hig sein, neue Taktiken anwenden und im Angesicht dieser gnadenlosen Herausforderungen seine Ausstattung variieren.
+</p>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

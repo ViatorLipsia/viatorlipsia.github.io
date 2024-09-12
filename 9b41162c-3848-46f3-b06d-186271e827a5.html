@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Yakuza 6: The Song of Life</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Yakuza 6: The Song of Life</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>Nicht gespielt</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-Nie">Nie</a> </TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:13:31</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-12.09.2024">12.09.2024</a> 5:21:05</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-XCloud">XCloud</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-Microsoft X Cloud">Microsoft X Cloud</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-08.12.2016">08.12.2016</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-84">84</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Hack and slash/Beat 'em up">Hack and slash/Beat 'em up</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_aufsteigend_name_aufsteigend.html#quicklink-Ryu ga Gotoku Studios">Ryu ga Gotoku Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-SEGA">SEGA</a><br/><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Sega Games">Sega Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://yakuza.sega.com/yakuza6/" target="_blank">Official</a><br/><a href="http://yakuza.wikia.com/wiki/Yakuza_6" target="_blank">Wikia</a><br/><a href="https://en.wikipedia.org/wiki/Yakuza_6" target="_blank">Wikipedia</a><br/><a href="https://store.steampowered.com/app/1388590" target="_blank">Steam</a><br/><a href="https://www.twitch.tv/directory/game/Yakuza%206:%20The%20Song%20of%20Life" target="_blank">Twitch</a><br/><a href="https://www.gog.com/en/game/yakuza_6_the_song_of_life" target="_blank">GOG</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<p>
+In Yakuza 6 untersucht Kazuma Kiryu eine Reihe zwielichtiger Ereignisse, in die jene verwickelt sind, die ihm am n&#228;chsten stehen. Dabei erf&#228;hrt er schmerzlich genau, wie weit Menschen gehen, um ihre Familie zu sch&#252;tzen – ganz gleich wen sie als Teil der Familie sehen. Nach Absitzen einer dreij&#228;hrigen Haftstrafe kehrt Kiryu – &#228;lter und etwas abgerissen – in die Freiheit zur&#252;ck, um festzustellen, dass seine Ziehtochter Haruka aus dem Waisenhaus verschwunden ist, um das er sich k&#252;mmert. Die Spur f&#252;hrt ihn in sein altes Revier in Kamurocho, wo er herausfindet, dass sie von einem Auto angefahren wurde und nun im Koma liegt. Doch damit nicht genug: Kiryu erf&#228;hrt, dass Haruka inzwischen einen Sohn hat, um den er sich k&#252;mmern muss. Mit Baby im Schlepptau reist Kiryu zur K&#252;stenstadt Onomichi, Pr&#228;fektur Hiroshima, um die Wahrheit &#252;ber Haruka und ihren Sohn aufzudecken – und ein d&#252;steres Geheimnis, das die Yakuza von Hiroshima h&#252;tet.
+</p>
+<p>
+Vom einzigartigen Realismus des neuen Schauplatzes, Onomichi (einer sch&#246;nen, verschlafenen Hafenstadt in der Pr&#228;fektur Hiroshima), bis hin zur neuesten Ausgabe von Kamurocho (dem gr&#246;&#223;ten Rotlichtbezirk in Tokio) – Yakuza 6 ist die ultimative Mischung von allem, was die Reihe zu bieten hat: ein d&#252;steres Krimidrama, extrem explosive K&#228;mpfe sowie unz&#228;hlige Vergn&#252;gungsm&#246;glichkeiten.
+</p>
+<p>
+Erlebe die &quot;Dragon Engine&quot; – Erkunde die Welt von Yakuza wie nie zuvor. Yakuza 6 ist das erste Yakuza-Spiel der aktuellen Generation, das von Grund auf f&#252;r die Hardware der aktuellen Generation entwickelt wurde – so wird die kriminelle Unterwelt Japans mit detaillierter Grafik, lebensechten Animationen, neuer Physik-Engine, interaktiven Fassaden, bruchlosen &#220;berg&#228;ngen und mehr zum Leben erweckt.
+</p>
+<p>
+Erkunde das wiedergeborene Kamurocho und das malerische Onomichi – die hypnotischen Lichter, die opportunistischen Bewohner und die hedonistischen Vergn&#252;gungsm&#246;glichkeiten Kamurochos sahen nie besser aus. F&#252;r maximales Vergn&#252;gen wurden Minispiele wie Karaoke, Schlagk&#228;fige, Darts, Hostessen-Clubs und die SEGA-Arcades &#252;berarbeitet. Au&#223;erdem gibt es jetzt auch Neuerungen wie das RIZAP Gym, das Cat Caf&#233; und den Clan Creator, die nach einer langen Pr&#252;gelnacht die perfekte Ablenkung bieten. Aber es ist auch Zeit, dem Gro&#223;stadtgewusel zu entfliehen und im malerischen Onomichi den Touristen zu spielen. In dieser friedlichen K&#252;stenstadt erwarten dich allerlei lokale Aktivit&#228;ten wie Barbesuche, Speerfischen (stell es dir wie einen actiongeladenen Rail Shooter vor ... mit Fischen) und mehr!
+</p>
+<p>
+Die Gegner werden fallen wie die Fliegen – denn der Kiryu in Yakuza 6 ist ein harter Knochen. Wenn es zu Stra&#223;enk&#228;mpfen kommt, macht diesem kampferprobten Draufg&#228;nger niemand etwas vor. Dieses Mal setzt er zwar nur einen Kampfstil ein, aber das &#228;ndert nichts daran, dass er seine Gegner plattmacht. Mit dabei sind wieder vernichtende Kombos und knochenbrecherische Heat-Aktionen, doch jetzt kann der Drache von Dojima auch einen Balken auff&#252;llen, mit dem er in den &quot;Extreme Heat&quot;-Modus geht. Wenn dieser Balken aktiviert ist, leuchtet Kiryu blau auf und kann mit seinen F&#228;usten oder jedem beliebigen &quot;Werkzeug&quot; in Reichweite verheerende Kombos austeilen.
+</p>
+<p>
+Voll vertonte japanische Sprachausgabe – zum allerersten Mal in der Geschichte dieser Reihe ist der Dialog vollst&#228;ndig auf Japanisch vertont. Lass dich von der dramatischen Story und dem absurden Witz der Reihe mitrei&#223;en wie von einem interaktiven Film aus einem fernen Land.
+</p>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

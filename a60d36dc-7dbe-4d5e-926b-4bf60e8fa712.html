@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>You... and who else?</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> You... and who else?</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Spielzeit</TD>
+								<TD>5h 44m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Letzte Aktivität</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_absteigend_name_aufsteigend.html#quicklink-13.06.2023">13.06.2023</a> 17:34:23</TD>
+							</TR>
+							<TR>
+								<TD>Hinzugefügt</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:18:36</TD>
+							</TR>
+							<TR>
+								<TD>Modifiziert</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_absteigend_name_aufsteigend.html#quicklink-11.09.2024">11.09.2024</a> 21:30:14</TD>
+							</TR>
+							<TR>
+								<TD>Fertigstellungsstatus</TD>
+								<TD><a href="default%20list%20text_completionstatus_aufsteigend_name_aufsteigend.html#quicklink-Gespielt">Gespielt</a></TD>
+							</TR>
+							<TR>
+								<TD>Bibliothek</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Quelle</TD>
+								<TD><a href="default%20list%20text_source_aufsteigend_name_aufsteigend.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Plattform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_aufsteigend_name_aufsteigend.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Veröffentlichungsdatum</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_absteigend_name_aufsteigend.html#quicklink-17.03.2017">17.03.2017</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Bewertungen</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_absteigend_name_aufsteigend.html#quicklink-60">60</a></TD>
+							</TR>
+							<TR>
+								<TD>Kritiker Punkte</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Benutzerwertung</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_absteigend_name_aufsteigend.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Simulator">Simulator</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_aufsteigend_name_aufsteigend.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Entwickler</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Verleger</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_aufsteigend_name_aufsteigend.html#quicklink-Aldorlea Games">Aldorlea Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Eigenschaft</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_aufsteigend_name_aufsteigend.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/459640" target="_blank">Steam</a><br/><a href="http://www.aldorlea.org/youandwhoelse.php" target="_blank">Official</a><br/><a href="https://www.twitch.tv/directory/game/You...%20and%20who%20else%3F" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Beschreibung</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">Description</h2><br><br><strong>YOU... and who else?</strong> is an addictive Strategy game developed by Aldorlea Games (Asguaard, Moonchild, Dreamscape etc.).<br><ul class="bb_ul"><li>Recruit troops, improve your skills, conquer castles and progressively unite the world under one banner.<br></li><li>Before entering the battlefield, use awards to enhance the capabilities of your generals, and then select one of them according to their units and skills to face off and defeat an enemy wave. </li></ul><br><strong>Strategy</strong> is a key element. <br>If you choose well, a general can defeat 3-4 enemy waves. But on the other hand, one mistake may have drastic consequences.<br>Are you a good enough tactician to defeat all the enemy waves and conquer the world?<h2 class="bb_tag">Features</h2><br><br><ul class="bb_ul"><li>10-20 hours of playtime<br></li><li>20 unique leaders with their particular style and troops<br></li><li>Up to 80 playable characters with their own strengths and weakness<br></li><li>30+ locations to explore<br></li><li>Tons of items to increase the strategic aspect<br></li><li>4 difficulty modes and end rating<br></li><li>Explore gorgeous, legendary places as you venture all over the world</li></ul><h2 class="bb_tag">Basic Gameplay Elements (Summary)</h2><br><br><ul class="bb_ul"><li>Get your favorite Generals to <strong>levels 3 and 6</strong> so they can command their <strong>3rd and 4th Troops</strong> respectively<br></li><li>Choose wisely who will enter the next fight - a defeat means the whole team loses!<br></li><li>Defeating the last wave gives the most experience points<br></li><li>Be faster than your enemies - a 1 point difference in Speed is enough to guarantee a headstart, unless the enemy is pre-emptive!<br></li><li>Pick the anti of each enemy side you face - strategy is crucial to win this game</li></ul><br>Read below for more detailed information!<br><br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/459640/extras/YOU.png?t=1630007295" /><h2 class="bb_tag">Know your Troops</h2><br><br>The more you play the game, the more you can know about your own troops (and your enemy's, since they are identical) but also the monsters.<br>The best strategies come with the greater knowledge of the game. It's important to note that, like your troops, monsters have levels, and can develop new skills and behaviors as they level up.<br>For instance, the rat cannot poison early on, but can at higher levels.<br>The best tactic is to pick a general that will suffer little to no damage against a wave. If you're able to predict how the enemy side will behave, you can emerge victorious!<br><br>A General gets a <u>3rd unit at Lv3</u> and a <u>4th (and final) unit at Lv6</u>. Try to have your most important Generals reach these levels as soon as possible by letting them kill the final wave (gives the most experience points) or awarding them with medals that give extra experience points or levels.<br><br>NB: <i>All achievements in this game can be obtained in Conquest Mode.</i><h2 class="bb_tag">Basic Troops</h2><br><br>To know the attributes of a character or troop, look into the equipment menu (WPN TYPE).<br><strong>TALENT(S)</strong> indicates what the character is able to do.<br><br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/459640/extras/talents.png?t=1630007295" /><br><br><ul class="bb_ul"><li>THE ARCHER: has pre-emptive hits<br></li><li>THE DUELLIST: counters hits<br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/459640/extras/duellist.png?t=1630007295" /><br></li><li>THE CHAMPION: counters skills<br></li><li>THE CRUSADER: has a very strong defense<br></li><li>THE WIZARD: is the master of fire magic<br></li><li>THE THIEF: can steal a few gold coins every fight<br></li><li>THE MUSKETEER: has pre-emptive hits<br></li><li>THE PROTECTOR: decreases damage taken by any party member<br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/459640/extras/protector.png?t=1630007295" /><br></li><li>THE MIMIC: gets stronger with more gold<br></li><li>THE ACROBAT: can tame the enemy<br></li><li>THE BEASTMISTRESS: can tame and seduce the enemy<br></li><li>THE LANCER: hits twice<br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/459640/extras/lancer.png?t=1630007295" /><br></li><li>THE PRIESTESS: can learn a strong spell against dark enemies<br></li><li>THE VAMPIRE: is deadly against humans and can seduce them<br></li><li>THE ZOMBIE: is even deadlier against humans and can tear them apart<br><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/459640/extras/zombie.png?t=1630007295" /><br></li><li>THE SPIDER: hits multiple times<br></li><li>THE PUPPET: hits several times and is immune to all ailments<br></li><li>THE SUCCUBUS: can seduce most human beings<br></li><li>THE DARK KNIGHT: deals crazy damage</li></ul><br>AND MANY MORE TO DISCOVER!
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
